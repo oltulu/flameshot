@@ -41,7 +41,7 @@ void VisualsEditor::initOpacitySlider() {
     m_opacitySlider = new ExtendedSlider();
     m_opacitySlider->setFocusPolicy(Qt::NoFocus);
     m_opacitySlider->setOrientation(Qt::Horizontal);
-    m_opacitySlider->setRange(0, 200);
+    m_opacitySlider->setRange(0, 100);
     connect(m_opacitySlider, &ExtendedSlider::modificationsEnded,
             this, &VisualsEditor::saveOpacity);
     QHBoxLayout *localLayout = new QHBoxLayout();

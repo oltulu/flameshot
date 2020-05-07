@@ -96,8 +96,10 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             break; // the while
         }
         // Number of buttons per row column
-        int buttonsPerRow = (m_selection.width() + m_separator) / (m_buttonExtendedSize);
-        int buttonsPerCol = (m_selection.height() + m_separator) / (m_buttonExtendedSize);
+        int buttonsPerRow = 19; 
+		//(m_selection.width() + m_separator) / (m_buttonExtendedSize);
+        int buttonsPerCol = 19; 
+		//(m_selection.height() + m_separator) / (m_buttonExtendedSize);
         // Buttons to be placed in the corners
         int extraButtons = (vecLength - elemIndicator) -
                 (buttonsPerRow + buttonsPerCol) * 2;
@@ -130,10 +132,10 @@ void ButtonHandler::updatePosition(const QRect &selection) {
         if (!m_blockedRight && elemIndicator < vecLength) {
             int addCounter = buttonsPerCol;
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
-
-            QPoint center = QPoint(m_selection.right() + m_separator,
+            QPoint center = QPoint(m_selection.right()+m_buttonExtendedSize*10,
                                    m_selection.center().y());
-            QVector<QPoint> positions = verticalPoints(center, addCounter, false);
+            QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
+            //QVector<QPoint> positions = verticalPoints(center, addCounter, false);
             moveButtonsToPoints(positions, elemIndicator);
         }
         // Add buttons at the top of the seletion
@@ -145,7 +147,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             if (addCounter == 1 + buttonsPerRow) {
                 adjustHorizontalCenter(center);
             }
-            QVector<QPoint> positions = horizontalPoints(center, addCounter, false);
+            QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
         // Add buttons at the left side of the seletion
@@ -153,9 +155,10 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             int addCounter = buttonsPerCol;
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
 
-            QPoint center = QPoint(m_selection.left() - m_buttonExtendedSize,
+            QPoint center = QPoint(m_selection.left()-m_buttonExtendedSize*10,
                                    m_selection.center().y());
-            QVector<QPoint> positions = verticalPoints(center, addCounter, true);
+            QVector<QPoint> positions = horizontalPoints(center, addCounter, false);
+            //QVector<QPoint> positions = verticalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
         // If there are elements for the next cycle, increase the size of the
@@ -210,7 +213,7 @@ QVector<QPoint> ButtonHandler::verticalPoints(
     if (!upToDown) { shift -= m_buttonBaseSize; }
     int y = upToDown ? center.y() - shift :
                        center.y() + shift;
-    QPoint i(center.x(), y);
+    QPoint i(center.x(),y);
     while (elements > res.length()) {
         res.append(i);
         upToDown ? i.setY(i.y() + m_buttonExtendedSize) :
@@ -240,35 +243,36 @@ void ButtonHandler::resetRegionTrack() {
 
 void ButtonHandler::updateBlockedSides() {
     const int EXTENSION = m_separator * 2 + m_buttonBaseSize;
-    // Right
-    QPoint pointA(m_selection.right() + EXTENSION,
+    const int EXTENSIONS = m_separator * 2 + m_buttonBaseSize * 15;
+    // Right  （右下   右上）
+    QPoint pointA(m_selection.right() + EXTENSIONS,
                 m_selection.bottom());
     QPoint pointB(pointA.x(),
                 m_selection.top());
     m_blockedRight = !(m_screenRegions.contains(pointA) &&
                        m_screenRegions.contains(pointB));
-    // Left
-    pointA.setX(m_selection.left() - EXTENSION);
+    // Left	（左下  左上）
+    pointA.setX(m_selection.left() - EXTENSIONS);
     pointB.setX(pointA.x());
     m_blockedLeft = !(m_screenRegions.contains(pointA) &&
                       m_screenRegions.contains(pointB));
-    // Bottom
+    // Bottom	 (左下  右下)
     pointA = QPoint(m_selection.left(),
                     m_selection.bottom() + EXTENSION);
     pointB = QPoint(m_selection.right(),
                     pointA.y());
     m_blockedBotton = !(m_screenRegions.contains(pointA) &&
                         m_screenRegions.contains(pointB));
-    // Top
+    // Top	（左上  右上）
     pointA.setY(m_selection.top() - EXTENSION);
     pointB.setY(pointA.y());
     m_blockedTop = !(m_screenRegions.contains(pointA) &&
                      m_screenRegions.contains(pointB));
     // Auxiliary
-    m_oneHorizontalBlocked = (!m_blockedRight && m_blockedLeft) ||
-            (m_blockedRight && !m_blockedLeft);
-    m_horizontalyBlocked = (m_blockedRight && m_blockedLeft);
-    m_allSidesBlocked = (m_blockedBotton && m_horizontalyBlocked && m_blockedTop);
+    m_oneHorizontalBlocked = (!m_blockedTop && m_blockedBotton) ||
+            (m_blockedBotton && !m_blockedTop);
+    m_horizontalyBlocked = (m_blockedBotton && m_blockedTop);
+    m_allSidesBlocked = (m_blockedLeft && m_horizontalyBlocked && m_blockedRight);
 }
 
 void ButtonHandler::expandSelection() {
