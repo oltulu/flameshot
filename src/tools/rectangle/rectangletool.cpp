@@ -27,8 +27,11 @@ RectangleTool::RectangleTool(QObject *parent) : AbstractTwoPointTool(parent) {
 }
 
 QIcon RectangleTool::icon(const QColor &background, bool inEditor) const {
-    Q_UNUSED(inEditor);
-    return QIcon(iconPath(background) + "square.svg");
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "square.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "square.svg");
 }
 QString RectangleTool::name() const {
     return tr("Rectangle");

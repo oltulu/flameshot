@@ -597,14 +597,17 @@ void CaptureWidget::setState(CaptureButton *b) {
     if (m_toolWidget) {
         m_toolWidget->deleteLater();
         if (m_activeTool->isValid()) {
+            b->setIcon(b->tool()->icon(m_contrastUiColor,false));
             pushToolToStack();
         }
     }
     if (m_activeButton != b) {
+        b->setIcon(b->tool()->icon(m_contrastUiColor,true));
         processTool(b->tool());
     }
     // Only close activated from button
     if (b->tool()->closeOnButtonPressed()) {
+        b->setIcon(b->tool()->icon(m_contrastUiColor,false));
         close();
     }
 
@@ -614,12 +617,14 @@ void CaptureWidget::setState(CaptureButton *b) {
             m_panel->addToolWidget(confW);
             if (m_activeButton) {
                 m_activeButton->setColor(m_uiColor);
+                b->setIcon(b->tool()->icon(m_uiColor,true));
             }
             m_activeButton = b;
             m_activeButton->setColor(m_contrastUiColor);
         } else if (m_activeButton) {
             m_panel->clearToolWidget();
             m_activeButton->setColor(m_uiColor);
+            b->setIcon(b->tool()->icon(m_uiColor,false));
             m_activeButton = nullptr;
         }
         update(); // clear mouse preview

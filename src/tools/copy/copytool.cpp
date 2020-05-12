@@ -28,8 +28,12 @@ bool CopyTool::closeOnButtonPressed() const {
 }
 
 QIcon CopyTool::icon(const QColor &background, bool inEditor) const {
-    Q_UNUSED(inEditor);
-    return QIcon(iconPath(background) + "content-copy.svg");
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "content-copy.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
+
 }
 QString CopyTool::name() const {
     return tr("Copy");

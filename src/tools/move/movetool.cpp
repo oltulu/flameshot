@@ -27,8 +27,11 @@ bool MoveTool::closeOnButtonPressed() const {
 }
 
 QIcon MoveTool::icon(const QColor &background, bool inEditor) const {
-    Q_UNUSED(inEditor);
-    return QIcon(iconPath(background) + "cursor-move.svg");
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "cursor-move.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "cursor-move.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "cursor-move.svg");
 }
 QString MoveTool::name() const {
     return tr("Move");

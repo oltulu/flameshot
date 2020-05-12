@@ -30,8 +30,11 @@ MarkerTool::MarkerTool(QObject *parent) : AbstractTwoPointTool(parent) {
 }
 
 QIcon MarkerTool::icon(const QColor &background, bool inEditor) const {
-    Q_UNUSED(inEditor);
-    return QIcon(iconPath(background) + "marker.svg");
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "marker.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "marker.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "marker.svg");
 }
 QString MarkerTool::name() const {
     return tr("Marker");

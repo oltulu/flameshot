@@ -27,8 +27,11 @@ CircleTool::CircleTool(QObject *parent) : AbstractTwoPointTool(parent) {
 }
 
 QIcon CircleTool::icon(const QColor &background, bool inEditor) const {
-    Q_UNUSED(inEditor);
-    return QIcon(iconPath(background) + "circle-outline.svg");
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "circle-outline.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "circle-outline.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "circle-outline.svg");
 }
 QString CircleTool::name() const {
     return tr("Circle");

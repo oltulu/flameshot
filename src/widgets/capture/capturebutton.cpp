@@ -52,7 +52,7 @@ void CaptureButton::initButton() {
     resize(GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize());
     setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()+2,
                           GlobalValues::buttonBaseSize()+2),
-                    QRegion::Ellipse));
+                    QRegion::Rectangle));
 
     setToolTip(m_tool->description());
 
@@ -64,7 +64,7 @@ void CaptureButton::initButton() {
                 QSize(GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize()));
 
     auto dsEffect = new QGraphicsDropShadowEffect(this);
-    dsEffect->setBlurRadius(5);
+    //dsEffect->setBlurRadius(5);
     dsEffect->setOffset(0);
     dsEffect->setColor(QColor(Qt::black));
 
@@ -83,7 +83,7 @@ QVector<CaptureButton::ButtonType> CaptureButton::getIterableButtonTypes() {
 
 QString CaptureButton::globalStyleSheet() {
     QColor mainColor = ConfigHandler().uiMainColorValue();
-    QString baseSheet = "CaptureButton { border-radius: %3;"
+    QString baseSheet = "CaptureButton {"
                         "background-color: %1; color: %4 }"
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
@@ -99,7 +99,7 @@ QString CaptureButton::globalStyleSheet() {
 }
 
 QString CaptureButton::styleSheet() const {
-    QString baseSheet = "CaptureButton { border-radius: %3;"
+    QString baseSheet = "CaptureButton { "
                         "background-color: %1; color: %4 }"
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
@@ -115,7 +115,7 @@ QString CaptureButton::styleSheet() const {
 
 // get icon returns the icon for the type of button
 QIcon CaptureButton::icon() const {
-    return m_tool->icon(m_mainColor, true);
+    return m_tool->icon(m_mainColor, false);
 }
 
 void CaptureButton::mousePressEvent(QMouseEvent *e) {
@@ -141,7 +141,7 @@ CaptureTool *CaptureButton::tool() const {
 void CaptureButton::setColor(const QColor &c) {
     m_mainColor = c;
     setStyleSheet(styleSheet());
-    updateIcon();
+    //updateIcon();
 }
 
 QColor CaptureButton::m_mainColor = ConfigHandler().uiMainColorValue();

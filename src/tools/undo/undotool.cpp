@@ -27,8 +27,12 @@ bool UndoTool::closeOnButtonPressed() const {
 }
 
 QIcon UndoTool::icon(const QColor &background, bool inEditor) const {
-    Q_UNUSED(inEditor);
-    return QIcon(iconPath(background) + "undo-variant.svg");
+   // Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "undo-variant.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "undo-variant.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "undo-variant.svg");
+
 }
 QString UndoTool::name() const {
     return tr("Undo");

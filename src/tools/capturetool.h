@@ -125,10 +125,10 @@ signals:
     void requestAction(Request r);
 
 protected:
-    QString iconPath(const QColor &c) const {
+    /*QString iconPath(const QColor &c) const {
         return ColorUtils::colorIsDark(c) ?
                     PathInfo::whiteIconPath() : PathInfo::blackIconPath();
-    }
+    }*/
 
 public slots:
     // On mouse release.

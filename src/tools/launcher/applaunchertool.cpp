@@ -27,8 +27,11 @@ bool AppLauncher::closeOnButtonPressed() const {
 }
 
 QIcon AppLauncher::icon(const QColor &background, bool inEditor) const {
-    Q_UNUSED(inEditor);
-    return QIcon(iconPath(background) + "open_with.svg");
+    //Q_UNUSED(inEditor);
+    //return QIcon(iconPath(background) + "open_with.svg");
+    Q_UNUSED(background);
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "open_with.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "open_with.svg");
 }
 QString AppLauncher::name() const {
     return tr("App Launcher");
