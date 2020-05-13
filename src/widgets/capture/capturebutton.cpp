@@ -84,7 +84,7 @@ QVector<CaptureButton::ButtonType> CaptureButton::getIterableButtonTypes() {
 QString CaptureButton::globalStyleSheet() {
     QColor mainColor = ConfigHandler().uiMainColorValue();
     QString baseSheet = "CaptureButton {"
-                        "background-color: %1; color: %4 }"
+                        "background-color: %1; color: %3 }"
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
                         "background-color: %1; }";
@@ -95,12 +95,12 @@ QString CaptureButton::globalStyleSheet() {
     QString color = ColorUtils::colorIsDark(mainColor) ? "white" : "black";
 
     return baseSheet.arg(mainColor.name()).arg(contrast.name())
-            .arg(GlobalValues::buttonBaseSize()/2).arg(color);
+            .arg(color);
 }
 
 QString CaptureButton::styleSheet() const {
     QString baseSheet = "CaptureButton { "
-                        "background-color: %1; color: %4 }"
+                        "background-color: %1; color: %3 }"
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
                         "background-color: %1; }";
@@ -110,7 +110,7 @@ QString CaptureButton::styleSheet() const {
     QString color = ColorUtils::colorIsDark(m_mainColor) ? "white" : "black";
 
     return baseSheet.arg(m_mainColor.name()).arg(contrast.name())
-            .arg(GlobalValues::buttonBaseSize()/2).arg(color);
+            .arg(color);
 }
 
 // get icon returns the icon for the type of button

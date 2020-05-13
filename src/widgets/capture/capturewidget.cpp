@@ -617,7 +617,8 @@ void CaptureWidget::setState(CaptureButton *b) {
             m_panel->addToolWidget(confW);
             if (m_activeButton) {
                 m_activeButton->setColor(m_uiColor);
-                b->setIcon(b->tool()->icon(m_uiColor,true));
+                //b->setIcon(b->tool()->icon(m_uiColor,true));
+                m_activeButton->setIcon(m_activeButton->tool()->icon(m_uiColor,false));
             }
             m_activeButton = b;
             m_activeButton->setColor(m_contrastUiColor);
