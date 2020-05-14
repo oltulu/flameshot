@@ -177,7 +177,7 @@ void ConfigHandler::setDrawColor(const QColor &c) {
 }
 
 bool ConfigHandler::showHelpValue() {
-    bool res = true;
+    bool res = false;
     if (m_settings.contains(QStringLiteral("showHelp"))) {
         res = m_settings.value(QStringLiteral("showHelp")).toBool();
     }
@@ -305,7 +305,7 @@ void ConfigHandler::setStartupLaunch(const bool start) {
 }
 
 int ConfigHandler::contrastOpacityValue() {
-    int opacity = 190;
+    int opacity = 50;
     if (m_settings.contains(QStringLiteral("contrastOpacity"))) {
         opacity = m_settings.value(QStringLiteral("contrastOpacity")).toInt();
         opacity = qBound(0, opacity, 255);
