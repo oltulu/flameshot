@@ -121,6 +121,10 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.center().x(),
                                    m_selection.bottom() + m_separator);
+            if(m_selection.center().x()- m_buttonExtendedSize*10< 0)
+            {
+                center.setX(m_buttonExtendedSize*10);
+            }
             if (addCounter > buttonsPerRow) {
                 adjustHorizontalCenter(center);
             }
@@ -144,6 +148,10 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.center().x(),
                                    m_selection.top() - m_buttonExtendedSize);
+            if(m_selection.center().x()- m_buttonExtendedSize*10< 0)
+            {
+                center.setX(m_buttonExtendedSize*10);
+            }
             if (addCounter == 1 + buttonsPerRow) {
                 adjustHorizontalCenter(center);
             }

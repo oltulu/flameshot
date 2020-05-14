@@ -156,7 +156,7 @@ void CaptureWidget::updateButtons() {
     m_contrastUiColor = m_config.uiContrastColorValue();
 
     auto buttons = m_config.getButtons();
-    QVector<CaptureButton*> vectorButtons;
+
 
     for (const CaptureButton::ButtonType &t: buttons) {
         CaptureButton *b = new CaptureButton(t, this);
@@ -265,6 +265,9 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2").arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
+        if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible()))
+            painter.drawRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(), 870, 40);
+        update();
         painter.setBrush(m_uiColor);
         for(auto r: m_selection->handlerAreas()) {
             painter.drawRoundRect(r, 100, 100);
@@ -273,6 +276,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 }
 
 void CaptureWidget::mousePressEvent(QMouseEvent *e) {
+    update();
     if (e->button() == Qt::RightButton) {
         m_rightClick = true;
         m_colorPicker->move(e->pos().x()-m_colorPicker->width()/2,

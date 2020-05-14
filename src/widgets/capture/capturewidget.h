@@ -59,7 +59,7 @@ public:
 
     void updateButtons();
     QPixmap pixmap();
-
+    QVector<CaptureButton*> vectorButtons;
 public slots:
     void deleteToolwidgetOrClose();
 

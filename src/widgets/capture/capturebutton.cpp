@@ -75,6 +75,7 @@ void CaptureButton::initButton() {
 void CaptureButton::updateIcon() {
     setIcon(icon());
     setIconSize(size()*0.6);
+    setFlat(true);
 }
 
 QVector<CaptureButton::ButtonType> CaptureButton::getIterableButtonTypes() {
