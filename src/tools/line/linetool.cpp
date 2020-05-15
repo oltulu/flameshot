@@ -33,8 +33,8 @@ QIcon LineTool::icon(const QColor &background, bool inEditor) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "line.svg");
     Q_UNUSED(background);
-    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "line.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "line.svg");
 }
 QString LineTool::name() const {
     return tr("Line");

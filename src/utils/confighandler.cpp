@@ -38,25 +38,22 @@ QVector<CaptureButton::ButtonType> ConfigHandler::getButtons() {
         buttons = fromIntToButton(buttonsInt);
     } else {
         // Default tools
-        buttons << CaptureButton::TYPE_PENCIL
-                << CaptureButton::TYPE_DRAWER
-                << CaptureButton::TYPE_ARROW
-                << CaptureButton::TYPE_SELECTION
-                << CaptureButton::TYPE_RECTANGLE
-                << CaptureButton::TYPE_CIRCLE
-                << CaptureButton::TYPE_MARKER
-                << CaptureButton::TYPE_BLUR
-                << CaptureButton::TYPE_SELECTIONINDICATOR
-                << CaptureButton::TYPE_MOVESELECTION
-                << CaptureButton::TYPE_UNDO
-                << CaptureButton::TYPE_REDO
-                << CaptureButton::TYPE_COPY
-                << CaptureButton::TYPE_SAVE
-                << CaptureButton::TYPE_EXIT
-                << CaptureButton::TYPE_IMAGEUPLOADER
-                << CaptureButton::TYPE_OPEN_APP
-                << CaptureButton::TYPE_PIN
-                << CaptureButton::TYPE_TEXT;
+        buttons << CaptureButton:: TYPE_CUT
+               << CaptureButton:: TYPE_LUPING
+               << CaptureButton:: TYPE_RECT
+               << CaptureButton:: TYPE_CIRCLE
+               << CaptureButton:: TYPE_LINE
+               << CaptureButton:: TYPE_ARROW
+               << CaptureButton:: TYPE_PEN
+               << CaptureButton:: TYPE_MARKER
+               << CaptureButton:: TYPE_TEXT
+               << CaptureButton:: TYPE_BLUR
+               << CaptureButton:: TYPR_UNDO
+               << CaptureButton:: TYPE_OPTION
+               << CaptureButton:: TYPE_CLOSE
+               << CaptureButton:: TYPE_COPY
+               << CaptureButton:: TYPE_SAVE
+               << CaptureButton:: TYPE_PIN;
     }
 
     using bt = CaptureButton::ButtonType;

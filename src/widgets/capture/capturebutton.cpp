@@ -36,12 +36,18 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     m_buttonType(t)
 {
     initButton();
-    if (t == TYPE_SELECTIONINDICATOR) {
+   /* if (t == TYPE_SELECTIONINDICATOR) {
         QFont f = this->font();
         setFont(QFont(f.family(), 7, QFont::Bold));
     } else {
         updateIcon();
+    }*/
+    if (t == TYPE_OPTION)
+    {
+        QFont f = this->font();
+        f.setBold(true);
     }
+    updateIcon();
     setCursor(Qt::ArrowCursor);
 }
 
@@ -55,6 +61,7 @@ void CaptureButton::initButton() {
                     QRegion::Rectangle));
 
     setToolTip(m_tool->description());
+
 
     m_emergeAnimation = new  QPropertyAnimation(this, "size", this);
     m_emergeAnimation->setEasingCurve(QEasingCurve::InOutQuad);
@@ -148,25 +155,22 @@ void CaptureButton::setColor(const QColor &c) {
 QColor CaptureButton::m_mainColor = ConfigHandler().uiMainColorValue();
 
 static std::map<CaptureButton::ButtonType, int> buttonTypeOrder {
-    { CaptureButton::TYPE_PENCIL,             0 },
-    { CaptureButton::TYPE_DRAWER,             1 },
-    { CaptureButton::TYPE_ARROW,              2 },
-    { CaptureButton::TYPE_SELECTION,          3 },
-    { CaptureButton::TYPE_RECTANGLE,          4 },
-    { CaptureButton::TYPE_CIRCLE,             5 },
-    { CaptureButton::TYPE_MARKER,             6 },
-    { CaptureButton::TYPE_TEXT,               7 },
-    { CaptureButton::TYPE_BLUR,               8 },
-    { CaptureButton::TYPE_SELECTIONINDICATOR, 9 },
-    { CaptureButton::TYPE_MOVESELECTION,     10 },
-    { CaptureButton::TYPE_UNDO,              11 },
-    { CaptureButton::TYPE_REDO,              12 },
-    { CaptureButton::TYPE_COPY,              13 },
-    { CaptureButton::TYPE_SAVE,              14 },
-    { CaptureButton::TYPE_EXIT,              15 },
-    { CaptureButton::TYPE_IMAGEUPLOADER,     16 },
-    { CaptureButton::TYPE_OPEN_APP,          17 },
-    { CaptureButton::TYPE_PIN,               18 },
+     { CaptureButton::  TYPE_CUT,          0 },
+     { CaptureButton::  TYPE_LUPING,       1 },
+     { CaptureButton::  TYPE_RECT,         2 },
+     { CaptureButton:: TYPE_CIRCLE,        3 },
+     { CaptureButton::  TYPE_LINE,         4 },
+     { CaptureButton::  TYPE_ARROW,        5 },
+     { CaptureButton:: TYPE_PEN,           6 },
+     { CaptureButton:: TYPE_MARKER,        7 },
+     { CaptureButton::  TYPE_TEXT,         8 },
+     { CaptureButton::  TYPE_BLUR,         9 },
+     { CaptureButton:: TYPR_UNDO,          10 },
+     { CaptureButton:: TYPE_OPTION,        11 },
+     { CaptureButton:: TYPE_CLOSE,         12 },
+     { CaptureButton:: TYPE_COPY,          13 },
+     { CaptureButton:: TYPE_SAVE,          14 },
+     {CaptureButton:: TYPE_PIN,            15 },
 };
 
 int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {
@@ -175,23 +179,20 @@ int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {
 }
 
 QVector<CaptureButton::ButtonType> CaptureButton::iterableButtonTypes = {
-    CaptureButton::TYPE_PENCIL,
-    CaptureButton::TYPE_DRAWER,
-    CaptureButton::TYPE_ARROW,
-    CaptureButton::TYPE_SELECTION,
-    CaptureButton::TYPE_RECTANGLE,
-    CaptureButton::TYPE_CIRCLE,
-    CaptureButton::TYPE_MARKER,
-    CaptureButton::TYPE_TEXT,
-    CaptureButton::TYPE_BLUR,
-    CaptureButton::TYPE_SELECTIONINDICATOR,
-    CaptureButton::TYPE_MOVESELECTION,
-    CaptureButton::TYPE_UNDO,
-    CaptureButton::TYPE_REDO,
-    CaptureButton::TYPE_COPY,
-    CaptureButton::TYPE_SAVE,
-    CaptureButton::TYPE_EXIT,
-    CaptureButton::TYPE_IMAGEUPLOADER,
-    CaptureButton::TYPE_OPEN_APP,
-    CaptureButton::TYPE_PIN,
+    CaptureButton:: TYPE_CUT,
+    CaptureButton:: TYPE_LUPING,
+    CaptureButton:: TYPE_RECT,
+    CaptureButton:: TYPE_CIRCLE,
+    CaptureButton:: TYPE_LINE,
+    CaptureButton:: TYPE_ARROW,
+    CaptureButton:: TYPE_PEN,
+    CaptureButton:: TYPE_MARKER,
+    CaptureButton:: TYPE_TEXT,
+    CaptureButton:: TYPE_BLUR,
+    CaptureButton:: TYPR_UNDO,
+    CaptureButton:: TYPE_OPTION,
+    CaptureButton:: TYPE_CLOSE,
+    CaptureButton:: TYPE_COPY,
+    CaptureButton:: TYPE_SAVE,
+    CaptureButton:: TYPE_PIN,
 };

@@ -30,8 +30,8 @@ QIcon ExitTool::icon(const QColor &background, bool inEditor) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "close.svg");
     Q_UNUSED(background);
-    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-copy.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "content-copy.svg");
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "close.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "close.svg");
 }
 QString ExitTool::name() const {
     return tr("Exit");

@@ -43,7 +43,7 @@
 #include <QMouseEvent>
 #include <QBuffer>
 #include <QDesktopWidget>
-
+#include <QDebug>
 // CaptureWidget is the main component used to capture the screen. It contains an
 // are of selection with its respective buttons.
 
@@ -160,10 +160,15 @@ void CaptureWidget::updateButtons() {
 
     for (const CaptureButton::ButtonType &t: buttons) {
         CaptureButton *b = new CaptureButton(t, this);
-        if (t == CaptureButton::TYPE_SELECTIONINDICATOR) {
+        /*if (t == CaptureButton::TYPE_SELECTIONINDICATOR) {
             m_sizeIndButton = b;
-        }
+        }*/
         b->setColor(m_uiColor);
+        if (t == CaptureButton::TYPE_OPTION) {
+            m_sizeIndButton = b;
+            m_sizeIndButton->setColor(Qt::black);
+        }
+
         makeChild(b);
 
         connect(b, &CaptureButton::pressedButton, this, &CaptureWidget::setState);
@@ -266,7 +271,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2").arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible()))
-            painter.drawRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(), 870, 40);
+            painter.drawRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(), GlobalValues::buttonBaseSize()*20+2, GlobalValues::buttonBaseSize()+2);
         update();
         painter.setBrush(m_uiColor);
         for(auto r: m_selection->handlerAreas()) {
@@ -621,7 +626,6 @@ void CaptureWidget::setState(CaptureButton *b) {
             m_panel->addToolWidget(confW);
             if (m_activeButton) {
                 m_activeButton->setColor(m_uiColor);
-                //b->setIcon(b->tool()->icon(m_uiColor,true));
                 m_activeButton->setIcon(m_activeButton->tool()->icon(m_uiColor,false));
             }
             m_activeButton = b;
@@ -684,6 +688,16 @@ void CaptureWidget::handleButtonSignal(CaptureTool::Request r) {
         break;
     case CaptureTool::REQ_CAPTURE_DONE_OK:
         m_captureDone = true;
+        break;
+    case CaptureTool::REQ_CUT:
+        //m_captureDone =false;
+        //update();
+        break;
+    case CaptureTool::REQ_LUPING:
+        //update();
+        break;
+    case CaptureTool::REQ_OPTIONS:
+        //update();
         break;
     case CaptureTool::REQ_ADD_CHILD_WIDGET:
         if (!m_activeTool) {
@@ -799,9 +813,9 @@ void CaptureWidget::initShortcuts() {
 void CaptureWidget::updateSizeIndicator() {
     if (m_sizeIndButton){
         const QRect &selection = extendedSelection();
-        m_sizeIndButton->setText(QStringLiteral("%1\n%2")
-                                     .arg(selection.width())
-                                     .arg(selection.height()));
+        m_sizeIndButton->setText(QString(" 选项 "));
+
+        //m_sizeIndButton->resize(90,50);
     }
 }
 

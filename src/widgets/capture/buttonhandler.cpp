@@ -20,7 +20,8 @@
 #include <QPoint>
 #include <QGuiApplication>
 #include <QScreen>
-
+#include <QApplication>
+#include <QDesktopWidget>
 // ButtonHandler is a habdler for every active button. It makes easier to
 // manipulate the buttons as a unit.
 
@@ -121,9 +122,16 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.center().x(),
                                    m_selection.bottom() + m_separator);
-            if(m_selection.center().x()- m_buttonExtendedSize*10< 0)
+            QPoint end2 = QPoint(m_selection.center().x()+m_buttonExtendedSize*18,
+                                m_selection.bottom() + m_separator);
+            if(!m_screenRegions.contains(QPoint(m_selection.center().x()-m_buttonExtendedSize*10,m_selection.bottom() + m_separator)))
             {
+
                 center.setX(m_buttonExtendedSize*10);
+            }
+            if(!m_screenRegions.contains(end2))
+            {
+                center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*10);
             }
             if (addCounter > buttonsPerRow) {
                 adjustHorizontalCenter(center);
@@ -148,9 +156,15 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.center().x(),
                                    m_selection.top() - m_buttonExtendedSize);
+            QPoint end2 = QPoint(m_selection.center().x()+m_buttonExtendedSize*18,
+                                m_selection.bottom() + m_separator);
             if(m_selection.center().x()- m_buttonExtendedSize*10< 0)
             {
                 center.setX(m_buttonExtendedSize*10);
+            }
+            if(!m_screenRegions.contains(end2))
+            {
+                 center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*10);
             }
             if (addCounter == 1 + buttonsPerRow) {
                 adjustHorizontalCenter(center);
@@ -165,7 +179,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
 
             QPoint center = QPoint(m_selection.left()-m_buttonExtendedSize*10,
                                    m_selection.center().y());
-            QVector<QPoint> positions = horizontalPoints(center, addCounter, false);
+            QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             //QVector<QPoint> positions = verticalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }

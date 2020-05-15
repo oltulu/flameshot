@@ -5,3 +5,13 @@ isEmpty(IMGUR_CLIENT_ID) {
 }
 
 DEFINES += IMGUR_CLIENT_ID=\\\"$${IMGUR_CLIENT_ID}\\\"
+
+HEADERS += \
+    $$PWD/tools/cut/cut.h \
+    $$PWD/tools/luping/luping.h \
+    $$PWD/tools/options/options.h
+
+SOURCES += \
+    $$PWD/tools/cut/cut.cpp \
+    $$PWD/tools/luping/luping.cpp \
+    $$PWD/tools/options/options.cpp

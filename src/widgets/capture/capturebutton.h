@@ -31,27 +31,26 @@ class CaptureButton : public QPushButton {
 public:
     // Don't forget to add the new types to CaptureButton::iterableButtonTypes
     // in the .cpp and the order value in the private array buttonTypeOrder
-    enum ButtonType {
-        TYPE_PENCIL = 0,
-        TYPE_DRAWER = 1,
-        TYPE_ARROW = 2,
-        TYPE_SELECTION = 3,
-        TYPE_RECTANGLE = 4,
-        TYPE_CIRCLE = 5,
-        TYPE_MARKER = 6,
-        TYPE_SELECTIONINDICATOR = 7,
-        TYPE_MOVESELECTION = 8,
-        TYPE_UNDO = 9,
-        TYPE_COPY = 10,
-        TYPE_SAVE = 11,
-        TYPE_EXIT = 12,
-        TYPE_IMAGEUPLOADER = 13,
-        TYPE_OPEN_APP = 14,
-        TYPE_BLUR = 15,
-        TYPE_REDO = 16,
-        TYPE_PIN = 17,
-        TYPE_TEXT = 18,
+    enum ButtonType
+    {
+        TYPE_CUT,
+        TYPE_LUPING,
+        TYPE_RECT,
+        TYPE_CIRCLE,
+        TYPE_LINE,
+        TYPE_ARROW,
+        TYPE_PEN,
+        TYPE_MARKER,
+        TYPE_TEXT,
+        TYPE_BLUR,
+        TYPR_UNDO,
+        TYPE_OPTION,
+        TYPE_CLOSE,
+        TYPE_COPY,
+        TYPE_SAVE,
+        TYPE_PIN,
     };
+
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 5, 0)
     Q_ENUMS(ButtonType)

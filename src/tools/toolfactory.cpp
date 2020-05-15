@@ -35,6 +35,9 @@
 #include "redo/redotool.h"
 #include "pin/pintool.h"
 #include "text/texttool.h"
+#include "cut/cut.h"
+#include "luping/luping.h"
+#include "options/options.h"
 
 ToolFactory::ToolFactory(QObject *parent) : QObject(parent) {
 
@@ -46,63 +49,56 @@ CaptureTool* ToolFactory::CreateTool(
 {
     CaptureTool *tool;
     switch (t) {
-    case CaptureButton::TYPE_ARROW:
-        tool = new ArrowTool(parent);
+
+    case CaptureButton::TYPE_CUT:
+        tool = new Cut(parent);
+        break;
+    case CaptureButton::TYPE_LUPING:
+        tool = new LuPing(parent);
+        break;
+    case CaptureButton::TYPE_RECT:
+        tool = new RectangleTool(parent);
         break;
     case CaptureButton::TYPE_CIRCLE:
         tool = new CircleTool(parent);
         break;
-    case CaptureButton::TYPE_COPY:
-        tool = new CopyTool(parent);
-        break;
-    case CaptureButton::TYPE_EXIT:
-        tool = new ExitTool(parent);
-        break;
-    case CaptureButton::TYPE_IMAGEUPLOADER:
-        tool = new ImgurUploaderTool(parent);
-        break;
-    case CaptureButton::TYPE_DRAWER:
+    case CaptureButton::TYPE_LINE:
         tool = new LineTool(parent);
+        break;
+    case CaptureButton::TYPE_ARROW:
+        tool = new ArrowTool(parent);
+        break;
+    case CaptureButton::TYPE_PEN:
+        tool = new PencilTool(parent);
         break;
     case CaptureButton::TYPE_MARKER:
         tool = new MarkerTool(parent);
         break;
-    case CaptureButton::TYPE_MOVESELECTION:
-        tool = new MoveTool(parent);
-        break;
-    case CaptureButton::TYPE_PENCIL:
-        tool = new PencilTool(parent);
-        break;
-    case CaptureButton::TYPE_RECTANGLE:
-        tool = new RectangleTool(parent);
-        break;
-    case CaptureButton::TYPE_SAVE:
-        tool = new SaveTool(parent);
-        break;
-    case CaptureButton::TYPE_SELECTION:
-        tool = new SelectionTool(parent);
-        break;
-    case CaptureButton::TYPE_SELECTIONINDICATOR:
-        tool = new SizeIndicatorTool(parent);
-        break;
-    case CaptureButton::TYPE_UNDO:
-        tool = new UndoTool(parent);
-        break;
-    case CaptureButton::TYPE_REDO:
-        tool = new RedoTool(parent);
-        break;
-    case CaptureButton::TYPE_OPEN_APP:
-        tool = new AppLauncher(parent);
+    case CaptureButton::TYPE_TEXT:
+        tool = new TextTool(parent);
         break;
     case CaptureButton::TYPE_BLUR:
         tool = new BlurTool(parent);
         break;
+    case CaptureButton::TYPR_UNDO:
+        tool = new UndoTool(parent);
+        break;
+    case CaptureButton::TYPE_OPTION:
+        tool = new Options(parent);
+        break;
+    case CaptureButton::TYPE_CLOSE:
+        tool = new ExitTool(parent);
+        break;
+    case CaptureButton::TYPE_COPY:
+        tool = new CopyTool(parent);
+        break;
+    case CaptureButton::TYPE_SAVE:
+        tool = new SaveTool(parent);
+        break;
     case CaptureButton::TYPE_PIN:
         tool = new PinTool(parent);
         break;
-    case CaptureButton::TYPE_TEXT:
-        tool = new TextTool(parent);
-        break;
+
     default:
         tool = nullptr;
         break;

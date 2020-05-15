@@ -64,5 +64,8 @@
         <file>img/material/white/circle-outline.svg</file>
         <file>img/material/white/blur.svg</file>
         <file>img/material/white/arrow-bottom-left.svg</file>
+        <file>img/material/black/cut.svg</file>
+        <file>img/material/white/luping.svg</file>
+        <file>img/material/black/luping_icon.svg</file>
     </qresource>
 </RCC>

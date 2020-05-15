@@ -62,6 +62,12 @@ public:
         REQ_ADD_CHILD_WINDOW,
         // Instance this->widget()'s widget which handles its own lifetime.
         REQ_ADD_EXTERNAL_WIDGETS,
+
+        REQ_CUT,
+
+        REQ_LUPING,
+
+        REQ_OPTIONS,
     };
 
     explicit CaptureTool(QObject *parent = nullptr) : QObject(parent){}
