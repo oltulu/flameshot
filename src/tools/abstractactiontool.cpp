@@ -26,7 +26,7 @@ bool AbstractActionTool::isValid() const {
 }
 
 bool AbstractActionTool::isSelectable() const {
-    return false;
+    return true;
 }
 
 bool AbstractActionTool::showMousePreview() const {

@@ -33,7 +33,10 @@
 #include <QWidget>
 #include <QUndoStack>
 #include <QPointer>
-
+#include "fontsize_color_chose.h"
+#include "fontsize_color_chose2.h"
+#include "save_location.h"
+#include "save_location2.h"
 class QPaintEvent;
 class QResizeEvent;
 class QMouseEvent;
@@ -56,13 +59,15 @@ public:
                            QWidget *parent = nullptr);
     ~CaptureWidget();
 
-
+    QString file;
     void updateButtons();
     QPixmap pixmap();
     QVector<CaptureButton*> vectorButtons;
+    QPoint  *font_color_point;
 public slots:
     void deleteToolwidgetOrClose();
-
+    void ClickedSavedir();
+    void ClickedSavedir2();
 signals:
     void captureTaken(uint id, QPixmap p);
     void captureFailed(uint id);
@@ -91,6 +96,7 @@ private slots:
     void setDrawColor(const QColor &c);
     void setDrawThickness(const int &t);
 
+
 protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *);
@@ -104,7 +110,10 @@ protected:
 
     // Context information
     CaptureContext m_context;
-
+    FontSize_Color_Chose *font_color;
+    FontSize_Color_Chose2 *font_color2;
+    Save_Location *save_location;
+    Save_Location2 *save_location2;
     // Main ui color
     QColor m_uiColor;
     // Secondary ui color

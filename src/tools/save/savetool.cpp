@@ -53,11 +53,11 @@ CaptureTool* SaveTool::copy(QObject *parent) {
 void SaveTool::pressed(const CaptureContext &context) {
     if (context.savePath.isEmpty()) {
         emit requestAction(REQ_HIDE_GUI);
-        bool ok = ScreenshotSaver().saveToFilesystemGUI(
+        /*bool ok = ScreenshotSaver().saveToFilesystemGUI(
                     context.selectedScreenshotArea());
         if (ok) {
             emit requestAction(REQ_CAPTURE_DONE_OK);
-        }
+        }*/
     } else {
         bool ok = ScreenshotSaver().saveToFilesystem(
                     context.selectedScreenshotArea(), context.savePath);

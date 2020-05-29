@@ -20,5 +20,4 @@
 namespace GlobalValues {
 
 int buttonBaseSize();
-
 }

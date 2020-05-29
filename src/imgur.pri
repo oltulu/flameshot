@@ -9,9 +9,17 @@ DEFINES += IMGUR_CLIENT_ID=\\\"$${IMGUR_CLIENT_ID}\\\"
 HEADERS += \
     $$PWD/tools/cut/cut.h \
     $$PWD/tools/luping/luping.h \
-    $$PWD/tools/options/options.h
+    $$PWD/tools/options/options.h \
+    $$PWD/widgets/capture/fontsize_color_chose.h \
+    $$PWD/widgets/capture/fontsize_color_chose2.h \
+    $$PWD/widgets/capture/save_location.h \
+    $$PWD/widgets/capture/save_location2.h
 
 SOURCES += \
     $$PWD/tools/cut/cut.cpp \
     $$PWD/tools/luping/luping.cpp \
-    $$PWD/tools/options/options.cpp
+    $$PWD/tools/options/options.cpp \
+    $$PWD/widgets/capture/fontsize_color_chose.cpp \
+    $$PWD/widgets/capture/fontsize_color_chose2.cpp \
+    $$PWD/widgets/capture/save_location.cpp \
+    $$PWD/widgets/capture/save_location2.cpp
