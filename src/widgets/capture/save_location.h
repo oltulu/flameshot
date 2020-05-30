@@ -23,8 +23,7 @@ public:
      QRadioButton *jpg , *png,*bmp;
 signals:
 
-public slots:
-    void ClickedSaveDir();
+
 protected:
     void paintEvent(QPaintEvent *event) ;
 private:

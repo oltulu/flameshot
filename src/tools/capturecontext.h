@@ -44,5 +44,7 @@ struct CaptureContext {
     // Mode of the capture widget
     bool fullscreen;
 
+    QString  saveType;
+
     QPixmap selectedScreenshotArea() const ;
 };

@@ -54,6 +54,26 @@ bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture,
     SystemNotification().sendMessage(saveMessage, notificationPath);
     return ok;
 }
+bool ScreenshotSaver::saveToFilesystem(const QPixmap &capture,
+                                       const QString &path,const QString &type)
+{
+    QString completePath = FileNameHandler().generateAbsolutePath(path);
+    completePath = completePath + type;
+    bool ok = capture.save(completePath);
+    QString saveMessage;
+    QString notificationPath = completePath;
+
+    if (ok) {
+        ConfigHandler().setSavePath(path);
+        saveMessage = QObject::tr("Capture saved as ") + completePath;
+    } else {
+        saveMessage = QObject::tr("Error trying to save as ") + completePath;
+        notificationPath = "";
+    }
+
+    SystemNotification().sendMessage(saveMessage, notificationPath);
+    return ok;
+}
 
 bool ScreenshotSaver::saveToFilesystemGUI(const QPixmap &capture) {
     bool ok = false;

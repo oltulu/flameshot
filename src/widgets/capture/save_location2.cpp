@@ -84,11 +84,3 @@ void Save_Location2::paintEvent(QPaintEvent *event)
 
     //painter.drawText(20,50,"111111111");
 }
-void Save_Location2::ClickedSaveDir()
-{
-    file_path = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                     "/home",
-                                                     QFileDialog::ShowDirsOnly
-                                                     | QFileDialog::DontResolveSymlinks);
-    SaveDir->setText(file_path);
-}
