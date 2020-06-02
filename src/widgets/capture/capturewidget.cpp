@@ -232,6 +232,14 @@ void CaptureWidget::deleteToolwidgetOrClose() {
 void CaptureWidget::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     painter.drawPixmap(0, 0, m_context.screenshot);
+    if (m_context.mousePos.x()< m_selection->x()||m_context.mousePos.x()>m_selection->x()+m_selection->width()
+            ||m_context.mousePos.y()< m_selection->y()||m_context.mousePos.y()>m_selection->y()+m_selection->height()+m_buttonHandler->size()+20)
+       {
+           painter.drawPixmap(m_context.mousePos.x()+20,m_context.mousePos.y()+20,pixmap2);
+           painter.setOpacity(0.5);
+           painter.drawPixmap(m_context.mousePos.x()+20,m_context.mousePos.y()+20,crosspixmap);
+           update();
+       }
     if (m_activeTool && m_mouseIsClicked) {
         painter.save();
         m_activeTool->process(painter, m_context.screenshot);
@@ -359,6 +367,28 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
 
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     m_context.mousePos = e->pos();
+    mypixmap = mypixmap.grabWidget(this,e->pos().x(),e->pos().y(),32,32);
+    w = 32;
+    h = 32;
+    QImage crosstmp=mypixmap.toImage();
+    QRgb value = qRgb(0,0,255);
+    for(int i=0;i<w;i++)
+    {
+        for(int j=h/2-1;j<h/2;j++)
+        {
+           crosstmp.setPixel(i,j,value);
+        }
+    }
+    for(int i=w/2-1;i<w/2;i++)
+    {
+        for(int j=0;j<h;j++)
+        {
+            crosstmp.setPixel(i,j,value);
+        }
+    }
+    crosspixmap=QPixmap::fromImage( crosstmp.scaled(w*5,h*5,Qt::KeepAspectRatio) );
+    pixmap2 = mypixmap.scaled(w * 5,h * 5,Qt::KeepAspectRatio);
+    update();
     if (m_mouseIsClicked && !m_activeButton) {
         if (m_buttonHandler->isVisible()) {
             m_buttonHandler->hide();

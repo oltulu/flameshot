@@ -122,16 +122,16 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.center().x(),
                                    m_selection.bottom() + m_separator);
-            QPoint end2 = QPoint(m_selection.center().x()+m_buttonExtendedSize*18,
+            QPoint end2 = QPoint(m_selection.center().x()+m_buttonExtendedSize*10,
                                 m_selection.bottom() + m_separator);
-            if(!m_screenRegions.contains(QPoint(m_selection.center().x()-m_buttonExtendedSize*10,m_selection.bottom() + m_separator)))
+            if(!m_screenRegions.contains(QPoint(m_selection.center().x()-m_buttonExtendedSize*8,m_selection.bottom() + m_separator)))
             {
 
-                center.setX(m_buttonExtendedSize*10);
+                center.setX(m_buttonExtendedSize*9-2);
             }
             if(!m_screenRegions.contains(end2))
             {
-                center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*10);
+                center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9+2);
             }
             if (addCounter > buttonsPerRow) {
                 adjustHorizontalCenter(center);
@@ -144,7 +144,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
         if (!m_blockedRight && elemIndicator < vecLength) {
             int addCounter = buttonsPerCol;
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
-            QPoint center = QPoint(m_selection.right()+m_buttonExtendedSize*10,
+            QPoint center = QPoint(m_selection.right()+m_buttonExtendedSize*9,
                                    m_selection.center().y());
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             //QVector<QPoint> positions = verticalPoints(center, addCounter, false);
@@ -156,15 +156,15 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.center().x(),
                                    m_selection.top() - m_buttonExtendedSize);
-            QPoint end2 = QPoint(m_selection.center().x()+m_buttonExtendedSize*18,
+            QPoint end2 = QPoint(m_selection.center().x()+m_buttonExtendedSize*10,
                                 m_selection.bottom() + m_separator);
-            if(m_selection.center().x()- m_buttonExtendedSize*10< 0)
+            if(m_selection.center().x()- m_buttonExtendedSize*8< 0)
             {
-                center.setX(m_buttonExtendedSize*10);
+                center.setX(m_buttonExtendedSize*9-2);
             }
             if(!m_screenRegions.contains(end2))
             {
-                 center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*10);
+                 center.setX(QApplication::desktop()->width()-m_buttonExtendedSize*9+2);
             }
             if (addCounter == 1 + buttonsPerRow) {
                 adjustHorizontalCenter(center);
@@ -177,7 +177,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             int addCounter = buttonsPerCol;
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
 
-            QPoint center = QPoint(m_selection.left()-m_buttonExtendedSize*10,
+            QPoint center = QPoint(m_selection.left()-m_buttonExtendedSize*9,
                                    m_selection.center().y());
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             //QVector<QPoint> positions = verticalPoints(center, addCounter, true);
@@ -265,7 +265,7 @@ void ButtonHandler::resetRegionTrack() {
 
 void ButtonHandler::updateBlockedSides() {
     const int EXTENSION = m_separator * 2 + m_buttonBaseSize;
-    const int EXTENSIONS = m_separator * 2 + m_buttonBaseSize * 15;
+    const int EXTENSIONS = m_separator * 2 + m_buttonBaseSize * 20;
     // Right  （右下   右上）
     QPoint pointA(m_selection.right() + EXTENSIONS,
                 m_selection.bottom());

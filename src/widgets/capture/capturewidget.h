@@ -131,6 +131,10 @@ protected:
     bool m_previewEnabled;
     bool m_adjustmentButtonPressed;
 
+    QPixmap mypixmap;
+    QPixmap pixmap2;
+    QPixmap crosspixmap;
+    double w,h;
 private:
     void initContext(const QString &savePath, bool fullscreen);
     void initPanel();
