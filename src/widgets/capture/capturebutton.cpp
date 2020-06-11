@@ -42,13 +42,18 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     } else {
         updateIcon();
     }*/
+    setCursor(Qt::ArrowCursor);
     if (t == TYPE_OPTION)
     {
         QFont f = this->font();
         f.setBold(true);
+        setFlat(false);
     }
-    updateIcon();
-    setCursor(Qt::ArrowCursor);
+    else
+    {
+       updateIcon();
+    }
+
 }
 
 void CaptureButton::initButton() {
@@ -92,18 +97,22 @@ QVector<CaptureButton::ButtonType> CaptureButton::getIterableButtonTypes() {
 QString CaptureButton::globalStyleSheet() {
     QColor mainColor = ConfigHandler().uiMainColorValue();
     QString baseSheet = "CaptureButton {"
+                        "border-width:0px;"                     //边框宽度像素
+                        "border-radius:0px;"
                         "background-color: %1; color: %3 }"
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
                         "background-color: %1; }";
+
     // define color when mouse is hovering
     QColor contrast = ColorUtils::contrastColor(m_mainColor);
 
     // foreground color
     QString color = ColorUtils::colorIsDark(mainColor) ? "white" : "black";
 
-    return baseSheet.arg(mainColor.name()).arg(contrast.name())
-            .arg(color);
+    return baseSheet.arg(Qt::gray).arg(Qt::gray)
+                .arg(Qt::gray);
+
 }
 
 QString CaptureButton::styleSheet() const {
@@ -117,8 +126,9 @@ QString CaptureButton::styleSheet() const {
     // foreground color
     QString color = ColorUtils::colorIsDark(m_mainColor) ? "white" : "black";
 
-    return baseSheet.arg(m_mainColor.name()).arg(contrast.name())
-            .arg(color);
+    return color;
+    //return baseSheet.arg(m_mainColor.name()).arg(contrast.name())
+     //       .arg(color);
 }
 
 // get icon returns the icon for the type of button

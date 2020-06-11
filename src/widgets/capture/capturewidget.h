@@ -37,6 +37,9 @@
 #include "fontsize_color_chose2.h"
 #include "save_location.h"
 #include "save_location2.h"
+#include "font_options.h"
+#include "font_options2.h"
+
 class QPaintEvent;
 class QResizeEvent;
 class QMouseEvent;
@@ -95,8 +98,12 @@ private slots:
     void handleButtonSignal(CaptureTool::Request r);
     void setDrawColor(const QColor &c);
     void setDrawThickness(const int &t);
+    void font_type_changed(QFont f);
 
-
+    void  font_italic_clicked(bool);
+    void  font_bold_clicked(bool);
+    void  font_delete_clicked(bool);
+    void  font_underline_clicked(bool);
 protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *);
@@ -114,6 +121,9 @@ protected:
     FontSize_Color_Chose2 *font_color2;
     Save_Location *save_location;
     Save_Location2 *save_location2;
+    Font_Options *font_options;
+    Font_Options2 *font_options2;
+
     // Main ui color
     QColor m_uiColor;
     // Secondary ui color

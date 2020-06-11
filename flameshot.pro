@@ -76,6 +76,8 @@ DEFINES += QAPPLICATION_CLASS=QApplication
 
 SOURCES += src/main.cpp \
     src/widgets/capture/buttonhandler.cpp \
+    src/widgets/capture/font_options.cpp \
+    src/widgets/capture/font_options2.cpp \
     src/widgets/infowindow.cpp \
     src/config/configwindow.cpp \
     src/widgets/capture/capturewidget.cpp \
@@ -148,6 +150,8 @@ SOURCES += src/main.cpp \
     src/widgets/panel/sidepanelwidget.cpp
 
 HEADERS  += src/widgets/capture/buttonhandler.h \
+    src/widgets/capture/font_options.h \
+    src/widgets/capture/font_options2.h \
     src/widgets/infowindow.h \
     src/config/configwindow.h \
     src/widgets/capture/capturewidget.h \

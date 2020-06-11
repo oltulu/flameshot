@@ -47,4 +47,9 @@ struct CaptureContext {
     QString  saveType;
 
     QPixmap selectedScreenshotArea() const ;
+    QFont font_type;
+    bool bold;
+    bool underline;
+    bool deleteline;
+    bool italic;
 };

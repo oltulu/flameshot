@@ -18,10 +18,6 @@
         <file>img/material/black/line.svg</file>
         <file>img/material/black/graphics.svg</file>
         <file>img/material/black/format-text.svg</file>
-        <file>img/material/black/format_underlined.svg</file>
-        <file>img/material/black/format_strikethrough.svg</file>
-        <file>img/material/black/format_italic.svg</file>
-        <file>img/material/black/format_bold.svg</file>
         <file>img/material/black/exit-to-app.svg</file>
         <file>img/material/black/cursor-move.svg</file>
         <file>img/material/black/content-save.svg</file>
@@ -48,11 +44,6 @@
         <file>img/material/white/marker.svg</file>
         <file>img/material/white/line.svg</file>
         <file>img/material/white/graphics.svg</file>
-        <file>img/material/white/format-text.svg</file>
-        <file>img/material/white/format_underlined.svg</file>
-        <file>img/material/white/format_strikethrough.svg</file>
-        <file>img/material/white/format_italic.svg</file>
-        <file>img/material/white/format_bold.svg</file>
         <file>img/material/white/exit-to-app.svg</file>
         <file>img/material/white/cursor-move.svg</file>
         <file>img/material/white/content-save.svg</file>
@@ -67,5 +58,14 @@
         <file>img/material/black/cut.svg</file>
         <file>img/material/white/luping.svg</file>
         <file>img/material/black/luping_icon.svg</file>
+        <file>img/material/white/bold_font.svg</file>
+        <file>img/material/white/delete_font.svg</file>
+        <file>img/material/white/format_underline.svg</file>
+        <file>img/material/white/italic_font.svg</file>
+        <file>img/material/black/bold.svg</file>
+        <file>img/material/black/underline.svg</file>
+        <file>img/material/black/delete.svg</file>
+        <file>img/material/black/italic.svg</file>
+        <file>img/material/white/format-text.svg</file>
     </qresource>
 </RCC>

@@ -18,7 +18,7 @@
 #include "texttool.h"
 #include "textwidget.h"
 #include "textconfig.h"
-
+#include <QDebug>
 #define BASE_POINT_SIZE 8
 
 
@@ -46,11 +46,11 @@ QIcon TextTool::icon(const QColor &background, bool inEditor) const {
     //return QIcon(iconPath(background) + "text.svg");
     Q_UNUSED(background);
     return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "text.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "text.svg");
+                      QIcon(QStringLiteral(":/img/material/white/") + "format-text.svg");
 }
 
 QString TextTool::name() const {
-    return tr("Text");
+    return tr("text");
 }
 
 QString TextTool::nameID() {
@@ -130,7 +130,14 @@ void TextTool::process(QPainter &painter, const QPixmap &pixmap, bool recordUndo
 
 void TextTool::paintMousePreview(QPainter &painter, const CaptureContext &context) {
     Q_UNUSED(painter);
-    Q_UNUSED(context);
+    m_font = context.font_type;
+    if (m_widget) {
+        m_widget->setFont(context.font_type);
+    }
+    m_font.setBold(context.bold);
+    m_font.setItalic(context.italic);
+    m_font.setUnderline(context.underline);
+    m_font.setStrikeOut(context.deleteline);
 }
 
 void TextTool::drawEnd(const QPoint &p) {
@@ -144,11 +151,22 @@ void TextTool::drawMove(const QPoint &p) {
 void TextTool::drawStart(const CaptureContext &context) {
     m_color = context.color;
     m_size = context.thickness;
+    m_font.setBold(context.bold);
+    m_font.setItalic(context.italic);
+    m_font.setUnderline(context.underline);
+    m_font.setStrikeOut(context.deleteline);
+    qDebug()<<"start draw";
     emit requestAction(REQ_ADD_CHILD_WIDGET);
+
 }
 
 void TextTool::pressed(const CaptureContext &context) {
-    Q_UNUSED(context);
+    m_color = context.color;
+    m_size = context.thickness;
+    m_font.setBold(context.bold);
+    m_font.setItalic(context.italic);
+    m_font.setUnderline(context.underline);
+    m_font.setStrikeOut(context.deleteline);
 }
 
 void TextTool::colorChanged(const QColor &c) {
