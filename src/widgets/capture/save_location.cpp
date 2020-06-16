@@ -4,6 +4,7 @@
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #include <QFileDialog>
+#include <QStandardPaths>
 #define SHADOW_WIDTH  15     //小三角的阴影宽度
 #define TRIANGLE_WIDTH 15    //小三角的宽度
 #define TRIANGLE_HEIGHT 15    //小三角的高度
@@ -15,7 +16,7 @@ Save_Location::Save_Location(QWidget *parent)
     , m_triangleWidth(TRIANGLE_WIDTH)
     , m_triangleHeight(TRIANGLE_HEIGHT)
 {
-    this->setMouseTracking(true);
+
     setCursor(Qt::ArrowCursor);
     setWindowFlag(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
@@ -25,7 +26,8 @@ Save_Location::Save_Location(QWidget *parent)
     shadowEffect->setColor(Qt::gray);
     shadowEffect->setBlurRadius(BORDER_RADIUS);
     this->setGraphicsEffect(shadowEffect);
-    setFixedSize(100,100);
+    this->setMouseTracking(true);
+    //setFixedSize(100,100);
 }
 void Save_Location::setStartPos(int startX)
 {
@@ -39,23 +41,24 @@ void Save_Location::setCenterWidget(QWidget *widget)
     savedir = new QLabel("存储位置");
     SaveDir = new  QPushButton();
 
-    SaveDir->setText("/home");
+    QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+    SaveDir->setText(a.at(0));
     savetype = new QLabel("存储格式");
 
     jpg = new QRadioButton("jpg");
     png = new QRadioButton("png");
+    png->setChecked(true);
     bmp = new QRadioButton("bmp");
 
     hMainLayout->addWidget(jpg);
     hMainLayout->addWidget(png);
     hMainLayout->addWidget(bmp);
-
     vLayout->addWidget(savedir);
     vLayout->addWidget(SaveDir);
     vLayout->addWidget(savetype);
-    vLayout->addLayout(hMainLayout);
+    vLayout->addLayout(hMainLayout,Qt::AlignCenter);
     vLayout->setSpacing(0);
-    vLayout->setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH + TRIANGLE_WIDTH, SHADOW_WIDTH , SHADOW_WIDTH);
+    vLayout->setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH + TRIANGLE_WIDTH, SHADOW_WIDTH+5, SHADOW_WIDTH);
 }
 void Save_Location::setTriangleInfo(int width, int height)
 {
@@ -68,7 +71,7 @@ void Save_Location::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QColor(255,255,255));
+    painter.setBrush(QColor(225,225,225));
     //
     QPolygon trianglePolygon;
     trianglePolygon << QPoint(m_startx, m_triangleWidth + SHADOW_WIDTH);

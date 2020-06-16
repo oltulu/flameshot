@@ -1,4 +1,4 @@
-// Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
+﻿// Copyright(c) 2017-2019 Alejandro Sirgo Rica & Contributors
 //
 // This file is part of Flameshot.
 //
@@ -22,6 +22,7 @@
 #include <QScreen>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QDebug>
 // ButtonHandler is a habdler for every active button. It makes easier to
 // manipulate the buttons as a unit.
 
@@ -95,6 +96,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             m_selection = selection;
             positionButtonsInside(elemIndicator);
             break; // the while
+            qDebug()<<"qq"<<elemIndicator;
         }
         // Number of buttons per row column
         int buttonsPerRow = 19; 
@@ -137,6 +139,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
                 adjustHorizontalCenter(center);
             }
             // ElemIndicator, elemsAtCorners
+            qDebug()<<"qqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
@@ -146,6 +149,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
             QPoint center = QPoint(m_selection.right()+m_buttonExtendedSize*9,
                                    m_selection.center().y());
+            qDebug()<<"qqqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             //QVector<QPoint> positions = verticalPoints(center, addCounter, false);
             moveButtonsToPoints(positions, elemIndicator);
@@ -154,7 +158,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
         if (!m_blockedTop && elemIndicator < vecLength) {
             int addCounter = buttonsPerRow + elemCornersTop;
             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
-            QPoint center = QPoint(m_selection.center().x(),
+            QPoint center = QPoint(m_selection.center().x(),+
                                    m_selection.top() - m_buttonExtendedSize);
             QPoint end2 = QPoint(m_selection.center().x()+m_buttonExtendedSize*10,
                                 m_selection.bottom() + m_separator);
@@ -169,6 +173,7 @@ void ButtonHandler::updatePosition(const QRect &selection) {
             if (addCounter == 1 + buttonsPerRow) {
                 adjustHorizontalCenter(center);
             }
+            qDebug()<<"qqqqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
@@ -179,15 +184,17 @@ void ButtonHandler::updatePosition(const QRect &selection) {
 
             QPoint center = QPoint(m_selection.left()-m_buttonExtendedSize*9,
                                    m_selection.center().y());
+            qDebug()<<"qqqqqq"<<elemIndicator;
             QVector<QPoint> positions = horizontalPoints(center, addCounter, true);
             //QVector<QPoint> positions = verticalPoints(center, addCounter, true);
             moveButtonsToPoints(positions, elemIndicator);
         }
         // If there are elements for the next cycle, increase the size of the
-        // base area
+        // base areasetStyleSheet
         if (elemIndicator < vecLength && !(m_allSidesBlocked)) {
             expandSelection();
         }
+        qDebug()<<"qqqqqqq"<<elemIndicator;
         updateBlockedSides();
     }
 }
@@ -350,7 +357,23 @@ void ButtonHandler::moveButtonsToPoints(
 {
     for (const QPoint &p: points) {
         auto button = m_vectorButtons[index];
-        button->move(p);
+        if (index == 15)
+        {
+           button->move(m_selection.right() + GlobalValues::buttonBaseSize()/3,m_selection.top()+GlobalValues::buttonBaseSize()/3);
+        }
+        else if(index >= 10)
+        {
+
+            if (index >= 12)
+            {
+             button->move(p.x()+GlobalValues::buttonBaseSize()+5,p.y());
+            }
+            else
+              button->move(p.x()+5,p.y());
+        }
+        else{
+             button->move(p);
+        }
         ++index;
     }
 }

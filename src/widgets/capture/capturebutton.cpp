@@ -45,13 +45,31 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     setCursor(Qt::ArrowCursor);
     if (t == TYPE_OPTION)
     {
+        label = new  QLabel();
+        label2 = new  QLabel();
+        layout = new  QHBoxLayout(this);
+        label->setAlignment( Qt::AlignCenter);
+        label2->setAlignment( Qt::AlignCenter|Qt::AlignHCenter);
+        label->setText("选项");
+        label2->setPixmap(QPixmap(QStringLiteral(":/img/material/white/down.svg")));
+        layout->addWidget(label);
+        layout->addWidget(label2);
+        this->setFixedSize(GlobalValues::buttonBaseSize()*2,GlobalValues::buttonBaseSize());
         QFont f = this->font();
         f.setBold(true);
         setFlat(false);
     }
     else
     {
-       updateIcon();
+        if (t == TYPE_SAVE)
+        {
+            setFlat(false);
+            setText("保存");
+        }
+        else
+        {
+            updateIcon();
+        }
     }
 
 }
@@ -60,14 +78,21 @@ void CaptureButton::initButton() {
     m_tool = ToolFactory().CreateTool(m_buttonType, this);
 
     setFocusPolicy(Qt::NoFocus);
-    resize(GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize());
-    setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()+2,
+    if (m_tool->name() =="Options")
+    {
+        resize(GlobalValues::buttonBaseSize()*2, GlobalValues::buttonBaseSize());
+        setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()*2+4,
+                              GlobalValues::buttonBaseSize()*2+4),
+                        QRegion::Rectangle));
+    }
+    else
+    {
+        resize(GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize());
+        setMask(QRegion(QRect(-1,-1, GlobalValues::buttonBaseSize()+2,
                           GlobalValues::buttonBaseSize()+2),
-                    QRegion::Rectangle));
-
+                     QRegion::Rectangle));
+    }
     setToolTip(m_tool->description());
-
-
     m_emergeAnimation = new  QPropertyAnimation(this, "size", this);
     m_emergeAnimation->setEasingCurve(QEasingCurve::InOutQuad);
     m_emergeAnimation->setDuration(80);
@@ -81,13 +106,12 @@ void CaptureButton::initButton() {
     dsEffect->setColor(QColor(Qt::black));
 
     setGraphicsEffect(dsEffect);
-
 }
 
 void CaptureButton::updateIcon() {
     setIcon(icon());
     setIconSize(size()*0.6);
-    setFlat(true);
+    //setFlat(true);
 }
 
 QVector<CaptureButton::ButtonType> CaptureButton::getIterableButtonTypes() {
@@ -110,9 +134,8 @@ QString CaptureButton::globalStyleSheet() {
     // foreground color
     QString color = ColorUtils::colorIsDark(mainColor) ? "white" : "black";
 
-    return baseSheet.arg(Qt::gray).arg(Qt::gray)
-                .arg(Qt::gray);
-
+    return baseSheet.arg(Qt::blue).arg(Qt::blue)
+                .arg(Qt::blue);
 }
 
 QString CaptureButton::styleSheet() const {
@@ -180,7 +203,7 @@ static std::map<CaptureButton::ButtonType, int> buttonTypeOrder {
      { CaptureButton:: TYPE_CLOSE,         12 },
      { CaptureButton:: TYPE_COPY,          13 },
      { CaptureButton:: TYPE_SAVE,          14 },
-     {CaptureButton:: TYPE_PIN,            15 },
+     {CaptureButton::  TYPE_PIN,            15 },
 };
 
 int CaptureButton::getPriorityByButton(CaptureButton::ButtonType b) {

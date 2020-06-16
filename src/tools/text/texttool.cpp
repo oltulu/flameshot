@@ -134,6 +134,7 @@ void TextTool::paintMousePreview(QPainter &painter, const CaptureContext &contex
     if (m_widget) {
         m_widget->setFont(context.font_type);
     }
+    m_font.setFamily(context.font_type.family());
     m_font.setBold(context.bold);
     m_font.setItalic(context.italic);
     m_font.setUnderline(context.underline);
@@ -151,6 +152,7 @@ void TextTool::drawMove(const QPoint &p) {
 void TextTool::drawStart(const CaptureContext &context) {
     m_color = context.color;
     m_size = context.thickness;
+    m_font.setFamily(context.font_type.family());
     m_font.setBold(context.bold);
     m_font.setItalic(context.italic);
     m_font.setUnderline(context.underline);
@@ -163,6 +165,7 @@ void TextTool::drawStart(const CaptureContext &context) {
 void TextTool::pressed(const CaptureContext &context) {
     m_color = context.color;
     m_size = context.thickness;
+    m_font.setFamily(context.font_type.family());
     m_font.setBold(context.bold);
     m_font.setItalic(context.italic);
     m_font.setUnderline(context.underline);

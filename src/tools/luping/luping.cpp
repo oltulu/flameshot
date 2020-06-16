@@ -17,7 +17,7 @@ QIcon LuPing:: icon(const QColor &background, bool inEditor) const
 }
 QString LuPing::name() const
 {
-    return tr("LuPing");
+    return tr("录屏");
 }
  QString LuPing:: nameID()
 {

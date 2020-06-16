@@ -62,17 +62,25 @@ void Font_Options::setCenterWidget(QWidget *widget)
     Start_y = 60;
     Font_size->move(Start_x,Start_y);
     delete_btn = new QPushButton(this);
+    delete_btn->setToolTip("添加删除线");
+    delete_btn->setStyleSheet("QPushButton{background-color:white}");
     delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete_font.svg"));
     delete_btn->move(20,90);
     Underline_btn= new QPushButton(this);
+    Underline_btn->setStyleSheet("QPushButton{background-color:white}");
     Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "format_underline.svg"));
     Underline_btn->move(70,90);
+    Underline_btn->setToolTip("添加下划线");
     bold_btn = new QPushButton(this);
+    bold_btn->setStyleSheet("QPushButton{background-color:white}");
     bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold_font.svg"));
     bold_btn->move(120,90);
+    bold_btn->setToolTip("加粗文字");
     Italic_btn = new QPushButton(this);
+    Italic_btn->setStyleSheet("QPushButton{background-color:white}");
     Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic_font.svg"));
     Italic_btn->move(170,90);
+    Italic_btn->setToolTip("斜体");
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
     connect(Font_type,SIGNAL(currentFontChanged(QFont)),

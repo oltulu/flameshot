@@ -2,7 +2,6 @@
 
 Options::Options(QObject *parent) : AbstractActionTool(parent)
 {
-
 }
 bool Options::closeOnButtonPressed() const
 {
@@ -26,7 +25,7 @@ QString Options::nameID()
 }
 QString Options::description() const
 {
-    return tr("options");
+    return tr("图片保存配置");
 }
 
 CaptureTool* Options::copy(QObject *parent)

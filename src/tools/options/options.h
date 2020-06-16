@@ -1,6 +1,8 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
+#include <QLabel>
+#include <QHBoxLayout>
 #include "src/tools/abstractactiontool.h"
 class Options : public AbstractActionTool {
     Q_OBJECT
@@ -18,6 +20,8 @@ public:
 
 public slots:
     void pressed(const CaptureContext &context) override;
+
+
 };
 
 #endif // OPTIONS_H

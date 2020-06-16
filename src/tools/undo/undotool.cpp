@@ -35,7 +35,7 @@ QIcon UndoTool::icon(const QColor &background, bool inEditor) const {
 
 }
 QString UndoTool::name() const {
-    return tr("Undo");
+    return tr("undo");
 }
 
 QString UndoTool::nameID() {

@@ -20,6 +20,8 @@
 #include <QPushButton>
 #include <QMap>
 #include <QVector>
+#include <QLabel>
+#include <QHBoxLayout>
 
 class QWidget;
 class QPropertyAnimation;
@@ -93,4 +95,10 @@ private:
 
     void initButton();
     void updateIcon();
+private:
+    QLabel *label;
+    QLabel *label2;
+
+    QHBoxLayout *layout;
+
 };

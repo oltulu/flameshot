@@ -4,6 +4,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #include <QFileDialog>
+#include <QStandardPaths>
+#include <QDir>
 #define SHADOW_WIDTH  15     //小三角的阴影宽度
 #define TRIANGLE_WIDTH 15    //小三角的宽度
 #define TRIANGLE_HEIGHT 15    //小三角的高度
@@ -38,12 +40,13 @@ void Save_Location2::setCenterWidget(QWidget *widget)
     //hMainLayout->addWidget(widget);
     savedir = new QLabel("存储位置");
     SaveDir = new  QPushButton();
-
-    SaveDir->setText("/home");
+    QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
+    SaveDir->setText(a.at(0));
     savetype = new QLabel("存储格式");
 
     jpg = new QRadioButton("jpg");
     png = new QRadioButton("png");
+    png->setChecked(true);
     bmp = new QRadioButton("bmp");
 
     hMainLayout->addWidget(jpg);
@@ -54,7 +57,6 @@ void Save_Location2::setCenterWidget(QWidget *widget)
     vLayout->addWidget(savetype);
     vLayout->addLayout(hMainLayout);
     vLayout->setSpacing(0);
-    //vLayout->setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH + TRIANGLE_WIDTH,  SHADOW_WIDTH , SHADOW_WIDTH);
     vLayout->setContentsMargins(0,0,SHADOW_WIDTH+m_triangleWidth+5,m_triangleHeight+SHADOW_WIDTH);
 }
 void Save_Location2::setTriangleInfo(int width, int height)
@@ -68,7 +70,7 @@ void Save_Location2::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.setPen(Qt::NoPen);
-    painter.setBrush(QColor(255,255,255));
+    painter.setBrush(QColor(225,225,225));
     //
     QPolygon trianglePolygon;
     trianglePolygon << QPoint(m_startx, height()- m_triangleWidth - SHADOW_WIDTH);

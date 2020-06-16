@@ -46,6 +46,7 @@
 #include <QDebug>
 #include <QRegion>
 #include <QFileDialog>
+#include <QStandardPaths>
 // CaptureWidget is the main component used to capture the screen. It scontains an
 // are of selection with its respective buttons.
 
@@ -181,26 +182,25 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     font_color2->setStartPos(80);
     font_color2->setTriangleInfo(20, 20);
     font_color2->setFixedSize(QSize(225, 150));
-    save_location->setStartPos(70);
+    save_location->setStartPos(100);
     save_location->setTriangleInfo(10, 10);
-    save_location->setFixedSize(QSize(150, 175));
+    save_location->setFixedSize(QSize(170, 175));
     save_location->setCenterWidget();
 
     save_location2->setStartPos(90);
     save_location2->setTriangleInfo(10, 10);
-    save_location2->setFixedSize(QSize(160, 175));
+    save_location2->setFixedSize(QSize(165, 175));
     save_location2->setCenterWidget();
 
     font_options->setStartPos(80);
     font_options->setTriangleInfo(10, 10);
     font_options->setFixedSize(QSize(350, 150));
     font_options->setCenterWidget();
-
+    font_options->Font_size->setValue(m_context.thickness);
     font_options2->setStartPos(80);
     font_options2->setTriangleInfo(10, 10);
     font_options2->setFixedSize(QSize(350, 150));
     font_options2->setCenterWidget();
-
     font_color->hide();
     font_color2->hide();
     save_location->hide();
@@ -236,10 +236,18 @@ void CaptureWidget::updateButtons() {
         /*if (t == CaptureButton::TYPE_SELECTIONINDICATOR) {
             m_sizeIndButton = b;
         }*/
-        b->setColor(m_uiColor);
+
         if (t == CaptureButton::TYPE_OPTION) {
             m_sizeIndButton = b;
             m_sizeIndButton->setColor(Qt::black);
+        }
+        else if (t == CaptureButton::TYPE_SAVE)
+        {
+            b->setColor(Qt::black);
+        }
+        else
+        {
+            b->setColor(m_uiColor);
         }
         makeChild(b);
         connect(b, &CaptureButton::pressedButton, this, &CaptureWidget::setState);
@@ -344,8 +352,19 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2").arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
-        if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible()))
+
+        if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
             painter.drawRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(), GlobalValues::buttonBaseSize()*20+2, GlobalValues::buttonBaseSize()+2);
+            painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3,
+                                    m_selection->geometry().intersected(rect()).y()+GlobalValues::buttonBaseSize()/3,
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize(),
+                                    GlobalValues::buttonBaseSize()/2,
+                                    GlobalValues::buttonBaseSize()/2);
+            painter.setBrush(QColor(0,0,0));
+            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+12,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1, GlobalValues::buttonBaseSize()/2);
+            painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16-9,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1,GlobalValues::buttonBaseSize()/2);
+        }
         update();
         painter.setBrush(m_uiColor);
         for(auto r: m_selection->handlerAreas()) {
@@ -627,7 +646,7 @@ void CaptureWidget::wheelEvent(QWheelEvent *e) {
     if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
         update();
     }
-    emit thicknessChanged(m_context.thickness);
+   // emit thicknessChanged(m_context.thickness);
 }
 
 void CaptureWidget::resizeEvent(QResizeEvent *e) {
@@ -741,6 +760,7 @@ void CaptureWidget::initSelection() {
             {
                 if (b->y()+175 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
+                    font_options->Font_size->setValue(m_context.thickness);
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -755,6 +775,7 @@ void CaptureWidget::initSelection() {
                 }
                 else
                 {
+                    font_options2->Font_size->setValue(m_context.thickness);
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -767,7 +788,8 @@ void CaptureWidget::initSelection() {
                     qDebug()<<"aaaaaaaaaaaaa2222";
                 }
             }
-            else{
+            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
+            {
                 if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
                     save_location2->hide();
@@ -820,6 +842,7 @@ void CaptureWidget::initSelection() {
             {
                 if (b->y()- 165 >= 0)
                 {
+                    font_options->Font_size->setValue(m_context.thickness);
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -833,6 +856,7 @@ void CaptureWidget::initSelection() {
                 }
                 else
                 {
+                    font_options2->Font_size->setValue(m_context.thickness);
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -845,7 +869,7 @@ void CaptureWidget::initSelection() {
                     qDebug()<<"aaaaaaaaaaaaa2222";
                 }
             }
-            else
+            else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
             {
                 if (b->y()-150 >= 0)
                 {
@@ -922,6 +946,7 @@ void CaptureWidget::initSelection() {
                     {
                         if (b->y()+175 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
+                            font_options->Font_size->setValue(m_context.thickness);
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -930,11 +955,10 @@ void CaptureWidget::initSelection() {
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_options->move(font_color_point->x(),font_color_point->y());
                             font_options->show();
-
-                            qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                         else
                         {
+                            font_options2->Font_size->setValue(m_context.thickness);
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -947,7 +971,8 @@ void CaptureWidget::initSelection() {
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
-                    else{
+                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
+                    {
                         if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
                             save_location2->hide();
@@ -1000,6 +1025,7 @@ void CaptureWidget::initSelection() {
                     {
                         if (b->y()- 165 >= 0)
                         {
+                            font_options2->Font_size->setValue(m_context.thickness);
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1013,6 +1039,7 @@ void CaptureWidget::initSelection() {
                         }
                         else
                         {
+                            font_options2->Font_size->setValue(m_context.thickness);
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1025,7 +1052,7 @@ void CaptureWidget::initSelection() {
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
-                    else
+                    else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
                     {
                         if (b->y()-150 >= 0)
                         {
@@ -1240,7 +1267,7 @@ void CaptureWidget::initSelection() {
      void CaptureWidget::updateSizeIndicator() {
          if (m_sizeIndButton){
              const QRect &selection = extendedSelection();
-             m_sizeIndButton->setText(QString(" 选项 "));
+             //m_sizeIndButton->setText(QString(" 选项 "));
              //m_sizeIndButton->resize(90,50);
          }
      }
@@ -1357,12 +1384,14 @@ void CaptureWidget::initSelection() {
 
      void CaptureWidget::ClickedSavedir()
      {
+         QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
          setWindowFlags(Qt::BypassWindowManagerHint
                       | Qt::FramelessWindowHint
                       | Qt::Tool);
          qDebug()<<"asaaaaaaaaaaaaaaaaaaaaaaaaa";
+
          file = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                  "/home/huan/图片",
+                                                  a.at(0),
                                                   QFileDialog::ShowDirsOnly
                                                   | QFileDialog::DontResolveSymlinks);
          if (file != nullptr)
@@ -1374,10 +1403,12 @@ void CaptureWidget::initSelection() {
             }
             else if(save_location->bmp->isChecked())
             {
+                save_location->png->setChecked(false);
                 m_context.saveType =".bmp";
             }
             else if(save_location->jpg->isChecked())
             {
+                save_location->png->setChecked(false);
                 m_context.saveType =".jpg";
             }
             save_location->SaveDir->setText(file);
@@ -1386,8 +1417,8 @@ void CaptureWidget::initSelection() {
          else
          {
             qDebug()<<"asccccccccccccccccccccccccccccccc";
-            save_location->SaveDir->setText("/home/huan/图片");
-            m_context.savePath = "/home/huan/图片";
+            save_location->SaveDir->setText(a.at(0));
+            m_context.savePath = a.at(0);
             m_context.saveType =".png";
          }
 
@@ -1399,12 +1430,13 @@ void CaptureWidget::initSelection() {
       }
      void CaptureWidget::ClickedSavedir2()
      {
+         QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
          setWindowFlags(Qt::BypassWindowManagerHint
                       | Qt::FramelessWindowHint
                       | Qt::Tool);
          qDebug()<<"asaaaaaaaaaaaaaaaaaaaaaaaaa";
          file = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
-                                                  "/home/huan/图片",
+                                                  a.at(0),
                                                   QFileDialog::ShowDirsOnly
                                                   | QFileDialog::DontResolveSymlinks);
          if (file != nullptr)
@@ -1414,13 +1446,17 @@ void CaptureWidget::initSelection() {
             if (save_location2->png->isChecked())
             {
                 m_context.saveType =".png";
+                qDebug()<<"png  is clicked";
             }
             else if(save_location2->bmp->isChecked())
             {
+                save_location2->png->setChecked(false);
                 m_context.saveType =".bmp";
+                qDebug()<<"bmp  is clicked";
             }
             else if(save_location2->jpg->isChecked())
             {
+                save_location2->png->setChecked(false);
                 m_context.saveType =".jpg";
             }
             m_context.savePath = file;
@@ -1428,9 +1464,10 @@ void CaptureWidget::initSelection() {
          else
          {
             qDebug()<<"asccccccccccccccccccccccccccccccc";
-            save_location2->SaveDir->setText("/home/huan/图片");
-            m_context.savePath = "/home/huan/图片";
+            save_location2->SaveDir->setText(a.at(0));
+            m_context.savePath = a.at(0);
             m_context.saveType =".png";
+            qDebug()<<"default is png";
          }
 
          setWindowFlags(Qt::BypassWindowManagerHint
@@ -1448,20 +1485,16 @@ void CaptureWidget::initSelection() {
      void  CaptureWidget::font_bold_clicked(bool b)
      {
          m_context.bold = b;
-          qDebug()<<"qqqqeerrrrrrrrrrrrr"<< b;
      }
      void  CaptureWidget::font_delete_clicked(bool b)
      {
          m_context.deleteline = b;
-         qDebug()<<"qqqqeeeeeeeeeeeeee"<< b;
      }
      void CaptureWidget::font_underline_clicked(bool b)
      {
          m_context.underline =b;
-         qDebug()<<"qqqwwwwwwwwwwwwwww" << b ;
      }
      void CaptureWidget::font_italic_clicked(bool b)
      {
          m_context.italic =b;
-         qDebug()<<"qqqqqqqqqqqqqqqq";
      }

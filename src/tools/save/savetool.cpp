@@ -31,8 +31,9 @@ QIcon SaveTool::icon(const QColor &background, bool inEditor) const {
     //Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "content-save.svg");
     Q_UNUSED(background);
-    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-save.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");
+    /*return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "content-save.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "content-save.svg");*/
+    return  QIcon();
 }
 QString SaveTool::name() const {
     return tr("Save");
