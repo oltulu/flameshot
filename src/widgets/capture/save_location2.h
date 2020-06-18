@@ -21,8 +21,11 @@ public:
     QPushButton *SaveDir;
     QString file_path ;
     QRadioButton *jpg , *png,*bmp;
-signals:
 
+signals:
+     void  save_type_clicked();
+public slots:
+     void  save_type_click();
 
 protected:
     void paintEvent(QPaintEvent *event) ;

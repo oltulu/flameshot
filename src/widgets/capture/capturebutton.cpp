@@ -36,12 +36,6 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
     m_buttonType(t)
 {
     initButton();
-   /* if (t == TYPE_SELECTIONINDICATOR) {
-        QFont f = this->font();
-        setFont(QFont(f.family(), 7, QFont::Bold));
-    } else {
-        updateIcon();
-    }*/
     setCursor(Qt::ArrowCursor);
     if (t == TYPE_OPTION)
     {
@@ -64,6 +58,7 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
         if (t == TYPE_SAVE)
         {
             setFlat(false);
+            setStyleSheet(styleSheet());
             setText("保存");
         }
         else
@@ -76,7 +71,6 @@ CaptureButton::CaptureButton(const ButtonType t, QWidget *parent) : QPushButton(
 
 void CaptureButton::initButton() {
     m_tool = ToolFactory().CreateTool(m_buttonType, this);
-
     setFocusPolicy(Qt::NoFocus);
     if (m_tool->name() =="Options")
     {
@@ -99,12 +93,10 @@ void CaptureButton::initButton() {
     m_emergeAnimation->setStartValue(QSize(0, 0));
     m_emergeAnimation->setEndValue(
                 QSize(GlobalValues::buttonBaseSize(), GlobalValues::buttonBaseSize()));
-
     auto dsEffect = new QGraphicsDropShadowEffect(this);
     //dsEffect->setBlurRadius(5);
     dsEffect->setOffset(0);
     dsEffect->setColor(QColor(Qt::black));
-
     setGraphicsEffect(dsEffect);
 }
 
@@ -127,15 +119,14 @@ QString CaptureButton::globalStyleSheet() {
                         "CaptureButton:hover { background-color: %2; }"
                         "CaptureButton:pressed:!hover { "
                         "background-color: %1; }";
-
     // define color when mouse is hovering
     QColor contrast = ColorUtils::contrastColor(m_mainColor);
 
     // foreground color
     QString color = ColorUtils::colorIsDark(mainColor) ? "white" : "black";
 
-    return baseSheet.arg(Qt::blue).arg(Qt::blue)
-                .arg(Qt::blue);
+    return baseSheet.arg(Qt::blue).arg(Qt::gray)
+                .arg(Qt::black);
 }
 
 QString CaptureButton::styleSheet() const {
@@ -149,9 +140,9 @@ QString CaptureButton::styleSheet() const {
     // foreground color
     QString color = ColorUtils::colorIsDark(m_mainColor) ? "white" : "black";
 
-    return color;
-    //return baseSheet.arg(m_mainColor.name()).arg(contrast.name())
-     //       .arg(color);
+   // return color;
+    return baseSheet.arg(Qt::blue).arg(Qt::blue)
+            .arg(Qt::black);
 }
 
 // get icon returns the icon for the type of button

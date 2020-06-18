@@ -18,7 +18,7 @@
 #include "savetool.h"
 #include "src/utils/screenshotsaver.h"
 #include <QPainter>
-
+#include <QStandardPaths>
 SaveTool::SaveTool(QObject *parent) : AbstractActionTool(parent) {
 
 }
@@ -52,14 +52,26 @@ CaptureTool* SaveTool::copy(QObject *parent) {
 }
 
 void SaveTool::pressed(const CaptureContext &context) {
+    QStringList a = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
     if (context.savePath.isEmpty()) {
         emit requestAction(REQ_HIDE_GUI);
-        /*bool ok = ScreenshotSaver().saveToFilesystemGUI(
-                    context.selectedScreenshotArea());
-        if (ok) {
+        if (context.saveType.isEmpty())
+        {
+            bool ok = ScreenshotSaver().saveToFilesystem(
+                    context.selectedScreenshotArea(), a.at(0), ".png");
+            if (ok) {
             emit requestAction(REQ_CAPTURE_DONE_OK);
-        }*/
-    } else {
+            }
+        }
+        else {
+            bool ok = ScreenshotSaver().saveToFilesystem(
+                    context.selectedScreenshotArea(), a.at(0), context.saveType);
+            if (ok) {
+            emit requestAction(REQ_CAPTURE_DONE_OK);
+            }
+       }
+    }
+    else {
         bool ok = ScreenshotSaver().saveToFilesystem(
                     context.selectedScreenshotArea(), context.savePath, context.saveType);
         if (ok) {

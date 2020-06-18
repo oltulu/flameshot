@@ -28,7 +28,7 @@ Font_Options2::Font_Options2(QWidget *parent)
     Start_y = 30;
      for (int i=0;i<4;i++)
      {
-         m_colorAreaList.append(QRect(Start_x,Start_y,20,20));
+          m_colorAreaList.append(QRect(Start_x,Start_y,20,20));
           Start_x += 25;
      }
      Start_x  = 220;

@@ -4,12 +4,12 @@
 <context>
     <name>AppLauncher</name>
     <message>
-        <location filename="../src/tools/launcher/applaunchertool.cpp" line="34"/>
+        <location filename="../src/tools/launcher/applaunchertool.cpp" line="37"/>
         <source>App Launcher</source>
         <translation>Anwendungs Starter</translation>
     </message>
     <message>
-        <location filename="../src/tools/launcher/applaunchertool.cpp" line="42"/>
+        <location filename="../src/tools/launcher/applaunchertool.cpp" line="45"/>
         <source>Choose an app to open the capture</source>
         <translation>Wähle eine Anwendung um die Auswahl zu öffnen</translation>
     </message>
@@ -51,12 +51,12 @@
 <context>
     <name>ArrowTool</name>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="80"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="86"/>
         <source>Arrow</source>
         <translation>Pfeil</translation>
     </message>
     <message>
-        <location filename="../src/tools/arrow/arrowtool.cpp" line="88"/>
+        <location filename="../src/tools/arrow/arrowtool.cpp" line="94"/>
         <source>Set the Arrow as the paint tool</source>
         <translation>Wähle den Pfeil als Werkzeug</translation>
     </message>
@@ -64,25 +64,73 @@
 <context>
     <name>BlurTool</name>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="34"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="37"/>
         <source>Blur</source>
         <translation>Verwischen</translation>
     </message>
     <message>
-        <location filename="../src/tools/blur/blurtool.cpp" line="42"/>
+        <location filename="../src/tools/blur/blurtool.cpp" line="45"/>
         <source>Set Blur as the paint tool</source>
         <translation>Wähle Verwischen als Werkzeug</translation>
     </message>
 </context>
 <context>
+    <name>CaptureLauncher</name>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="59"/>
+        <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="64"/>
+        <source>Rectangular Region</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="65"/>
+        <source>Full Screen (All Monitors)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="72"/>
+        <source>No Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="79"/>
+        <source> second</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="79"/>
+        <source> seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="83"/>
+        <source>Take new screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="90"/>
+        <source>Area:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capturelauncher.cpp" line="91"/>
+        <source>Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CaptureWidget</name>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="81"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="84"/>
         <source>Unable to capture screen</source>
         <translation>Bereich kann nicht erfasst werden</translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="231"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="323"/>
         <source>Select an area with the mouse, or press Esc to exit.
 Press Enter to capture the screen.
 Press Right Click to show the color picker.
@@ -94,16 +142,27 @@ Drücke die rechte Maustacke um die Farbe auszuwählen.
 Benutze das Mausrad um die Dicke des Werkzeugs auszuwählen.
 Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
     </message>
+    <message>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="356"/>
+        <source>%1 * %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1394"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1439"/>
+        <source>Open Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CircleTool</name>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="34"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="37"/>
         <source>Circle</source>
         <translation>Kreis</translation>
     </message>
     <message>
-        <location filename="../src/tools/circle/circletool.cpp" line="42"/>
+        <location filename="../src/tools/circle/circletool.cpp" line="45"/>
         <source>Set the Circle as the paint tool</source>
         <translation>Wähle den Kreis als Werkzeug</translation>
     </message>
@@ -134,22 +193,27 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../src/core/controller.cpp" line="169"/>
+        <location filename="../src/core/controller.cpp" line="175"/>
         <source>&amp;Take Screenshot</source>
         <translation>&amp;Bildschirmaufnahme anfertigen</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="174"/>
+        <location filename="../src/core/controller.cpp" line="180"/>
+        <source>&amp;Open Launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/core/controller.cpp" line="183"/>
         <source>&amp;Configuration</source>
         <translation>&amp;Einstellungen</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="177"/>
+        <location filename="../src/core/controller.cpp" line="186"/>
         <source>&amp;Information</source>
         <translation>&amp;Informationen</translation>
     </message>
     <message>
-        <location filename="../src/core/controller.cpp" line="180"/>
+        <location filename="../src/core/controller.cpp" line="189"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
@@ -157,14 +221,23 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>CopyTool</name>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="35"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="39"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../src/tools/copy/copytool.cpp" line="43"/>
+        <location filename="../src/tools/copy/copytool.cpp" line="47"/>
         <source>Copy the selection into the clipboard</source>
         <translation>Auswahl in die Zwischenablage kopieren</translation>
+    </message>
+</context>
+<context>
+    <name>Cut</name>
+    <message>
+        <location filename="../src/tools/cut/cut.cpp" line="20"/>
+        <location filename="../src/tools/cut/cut.cpp" line="28"/>
+        <source>Cut</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -178,12 +251,12 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>ExitTool</name>
     <message>
-        <location filename="../src/tools/exit/exittool.cpp" line="34"/>
+        <location filename="../src/tools/exit/exittool.cpp" line="37"/>
         <source>Exit</source>
         <translation>Beenden</translation>
     </message>
     <message>
-        <location filename="../src/tools/exit/exittool.cpp" line="42"/>
+        <location filename="../src/tools/exit/exittool.cpp" line="45"/>
         <source>Leave the capture screen</source>
         <translation>Auswahl beenden</translation>
     </message>
@@ -239,94 +312,114 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>GeneneralConf</name>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="78"/>
-        <location filename="../src/config/geneneralconf.cpp" line="184"/>
+        <location filename="../src/config/geneneralconf.cpp" line="86"/>
+        <location filename="../src/config/geneneralconf.cpp" line="192"/>
         <source>Import</source>
         <translation>Importieren</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="85"/>
         <location filename="../src/config/geneneralconf.cpp" line="93"/>
-        <location filename="../src/config/geneneralconf.cpp" line="115"/>
+        <location filename="../src/config/geneneralconf.cpp" line="101"/>
+        <location filename="../src/config/geneneralconf.cpp" line="123"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="85"/>
+        <location filename="../src/config/geneneralconf.cpp" line="93"/>
         <source>Unable to read file.</source>
         <translation>Datei kann nicht gelesen werden.</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="93"/>
-        <location filename="../src/config/geneneralconf.cpp" line="115"/>
+        <location filename="../src/config/geneneralconf.cpp" line="101"/>
+        <location filename="../src/config/geneneralconf.cpp" line="123"/>
         <source>Unable to write file.</source>
         <translation>Datei kann nicht geschrieben werden.</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="101"/>
+        <location filename="../src/config/geneneralconf.cpp" line="109"/>
         <source>Save File</source>
         <translation>Datei speichern</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="122"/>
+        <location filename="../src/config/geneneralconf.cpp" line="130"/>
         <source>Confirm Reset</source>
         <translation>Zurücksetzen bestätigen</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="123"/>
+        <location filename="../src/config/geneneralconf.cpp" line="131"/>
         <source>Are you sure you want to reset the configuration?</source>
         <translation>Sind Sie sicher, dass sie die Konfiguration zurücksetzen wollen?</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="132"/>
+        <location filename="../src/config/geneneralconf.cpp" line="140"/>
         <source>Show help message</source>
         <translation>Hilfetext anzeigen</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="136"/>
+        <location filename="../src/config/geneneralconf.cpp" line="144"/>
         <source>Show the help message at the beginning in the capture mode.</source>
         <translation>Hilfetext am Start der Auswahl anzeigen.</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="146"/>
-        <location filename="../src/config/geneneralconf.cpp" line="150"/>
+        <location filename="../src/config/geneneralconf.cpp" line="154"/>
+        <location filename="../src/config/geneneralconf.cpp" line="158"/>
         <source>Show desktop notifications</source>
         <translation>Zeige Desktopbenachrichtigungen</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="159"/>
+        <location filename="../src/config/geneneralconf.cpp" line="167"/>
         <source>Show tray icon</source>
         <translation>Zeige Taskleistensymbol</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="163"/>
+        <location filename="../src/config/geneneralconf.cpp" line="171"/>
         <source>Show the systemtray icon</source>
         <translation>Zeigt das Taskleistensymbol</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="174"/>
+        <location filename="../src/config/geneneralconf.cpp" line="182"/>
         <source>Configuration File</source>
         <translation>Konfigurationsdatei</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="179"/>
+        <location filename="../src/config/geneneralconf.cpp" line="187"/>
         <source>Export</source>
         <translation>Exportieren</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="189"/>
+        <location filename="../src/config/geneneralconf.cpp" line="197"/>
         <source>Reset</source>
         <translation>Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="197"/>
+        <location filename="../src/config/geneneralconf.cpp" line="205"/>
         <source>Launch at startup</source>
         <translation>Automatisch starten</translation>
     </message>
     <message>
-        <location filename="../src/config/geneneralconf.cpp" line="201"/>
+        <location filename="../src/config/geneneralconf.cpp" line="209"/>
         <source>Launch Flameshot</source>
         <translation>Starte Flameshot</translation>
+    </message>
+    <message>
+        <location filename="../src/config/geneneralconf.cpp" line="217"/>
+        <source>Close after capture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/config/geneneralconf.cpp" line="221"/>
+        <source>Close after taking a screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/config/geneneralconf.cpp" line="230"/>
+        <source>Copy URL after upload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/config/geneneralconf.cpp" line="233"/>
+        <source>Copy URL and close window after upload</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -337,43 +430,43 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
         <translation>Zu Imgur hochladen</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="53"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="54"/>
         <source>Uploading Image</source>
         <translation>Bild hochladen</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="133"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="140"/>
         <source>Copy URL</source>
         <translation>URL kopieren</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="134"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="141"/>
         <source>Open URL</source>
         <translation>URL öffnen</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="135"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="142"/>
         <source>Delete image</source>
         <translation>Bild löschen</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="136"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="143"/>
         <source>Image to Clipboard.</source>
         <translation>Bild in Zwischenablage.</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="155"/>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="168"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="162"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="175"/>
         <source>Unable to open the URL.</source>
         <translation>Kann URL nicht öffnen.</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="161"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="168"/>
         <source>URL copied to clipboard.</source>
         <translation>URL kopiert.</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploader.cpp" line="174"/>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="181"/>
         <source>Screenshot copied to clipboard.</source>
         <translation>Bildschirmaufnahme in Zwischenablage kopiert.</translation>
     </message>
@@ -381,12 +474,12 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>ImgurUploaderTool</name>
     <message>
-        <location filename="../src/tools/imgur/imguruploadertool.cpp" line="35"/>
+        <location filename="../src/tools/imgur/imguruploadertool.cpp" line="38"/>
         <source>Image Uploader</source>
         <translation>Bild hochladen</translation>
     </message>
     <message>
-        <location filename="../src/tools/imgur/imguruploadertool.cpp" line="43"/>
+        <location filename="../src/tools/imgur/imguruploadertool.cpp" line="46"/>
         <source>Upload the selection to Imgur</source>
         <translation>Auswahl zu Imgur hochladen</translation>
     </message>
@@ -402,7 +495,7 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
         <location filename="../src/widgets/infowindow.cpp" line="62"/>
         <source>SPACEBAR</source>
         <translation>Leertaste</translation>
-    </message>	
+    </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="63"/>
         <source>Right Click</source>
@@ -492,25 +585,38 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>LineTool</name>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="42"/>
+        <location filename="../src/tools/line/linetool.cpp" line="40"/>
         <source>Line</source>
         <translation>Linie</translation>
     </message>
     <message>
-        <location filename="../src/tools/line/linetool.cpp" line="50"/>
+        <location filename="../src/tools/line/linetool.cpp" line="48"/>
         <source>Set the Line as the paint tool</source>
         <translation>Wähle Linie als Werkzeug</translation>
     </message>
 </context>
 <context>
+    <name>LuPing</name>
+    <message>
+        <location filename="../src/tools/luping/luping.cpp" line="20"/>
+        <source>录屏</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tools/luping/luping.cpp" line="28"/>
+        <source>LuPing</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MarkerTool</name>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="42"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="40"/>
         <source>Marker</source>
         <translation>Markierer</translation>
     </message>
     <message>
-        <location filename="../src/tools/marker/markertool.cpp" line="50"/>
+        <location filename="../src/tools/marker/markertool.cpp" line="48"/>
         <source>Set the Marker as the paint tool</source>
         <translation>Wähle den Markierer als Werkzeug</translation>
     </message>
@@ -518,25 +624,38 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>MoveTool</name>
     <message>
-        <location filename="../src/tools/move/movetool.cpp" line="34"/>
+        <location filename="../src/tools/move/movetool.cpp" line="37"/>
         <source>Move</source>
         <translation>Bewege</translation>
     </message>
     <message>
-        <location filename="../src/tools/move/movetool.cpp" line="42"/>
+        <location filename="../src/tools/move/movetool.cpp" line="45"/>
         <source>Move the selection area</source>
         <translation>Bewege den Auswahlbereich</translation>
     </message>
 </context>
 <context>
+    <name>Options</name>
+    <message>
+        <location filename="../src/tools/options/options.cpp" line="20"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tools/options/options.cpp" line="28"/>
+        <source>图片保存配置</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PencilTool</name>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="30"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="33"/>
         <source>Pencil</source>
         <translation>Stift</translation>
     </message>
     <message>
-        <location filename="../src/tools/pencil/penciltool.cpp" line="38"/>
+        <location filename="../src/tools/pencil/penciltool.cpp" line="41"/>
         <source>Set the Pencil as the paint tool</source>
         <translation>Wähle den Stift als Werkzeug</translation>
     </message>
@@ -544,12 +663,12 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>PinTool</name>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="34"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="37"/>
         <source>Pin Tool</source>
-	<translation>Pinnwand Werkzeug</translation>
+        <translation>Pinnwand Werkzeug</translation>
     </message>
     <message>
-        <location filename="../src/tools/pin/pintool.cpp" line="42"/>
+        <location filename="../src/tools/pin/pintool.cpp" line="45"/>
         <source>Pin image on the desktop</source>
         <translation>Pinne Bild auf den Dekstop</translation>
     </message>
@@ -557,13 +676,14 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="84"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="110"/>
         <source>Save Error</source>
         <translation>Speicherfehler</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="47"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="78"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="48"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="68"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="104"/>
         <source>Capture saved as </source>
         <translation>Aufnahme gespeichert als </translation>
     </message>
@@ -573,16 +693,18 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
         <translation>Aufnahme in Zwischenablage gespeichert</translation>
     </message>
     <message>
-        <location filename="../src/utils/screenshotsaver.cpp" line="49"/>
-        <location filename="../src/utils/screenshotsaver.cpp" line="81"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="50"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="70"/>
+        <location filename="../src/utils/screenshotsaver.cpp" line="107"/>
         <source>Error trying to save as </source>
         <translation>Fehler beim Speichern unter </translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="72"/>
-        <location filename="../src/main.cpp" line="359"/>
-        <location filename="../src/main.cpp" line="383"/>
-        <location filename="../src/main.cpp" line="412"/>
+        <location filename="../src/main.cpp" line="77"/>
+        <location filename="../src/main.cpp" line="227"/>
+        <location filename="../src/main.cpp" line="376"/>
+        <location filename="../src/main.cpp" line="400"/>
+        <location filename="../src/main.cpp" line="429"/>
         <source>Unable to connect via DBus</source>
         <translation>Kann nicht via DBus verbinden</translation>
     </message>
@@ -596,16 +718,21 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
         <source>Unable to write in</source>
         <translation>Kein Schreibzugriff auf</translation>
     </message>
+    <message>
+        <location filename="../src/tools/imgur/imguruploader.cpp" line="82"/>
+        <source>URL copied to clipboard.</source>
+        <translation type="unfinished">URL kopiert.</translation>
+    </message>
 </context>
 <context>
     <name>RectangleTool</name>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="34"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="37"/>
         <source>Rectangle</source>
         <translation>Rechteck</translation>
     </message>
     <message>
-        <location filename="../src/tools/rectangle/rectangletool.cpp" line="42"/>
+        <location filename="../src/tools/rectangle/rectangletool.cpp" line="45"/>
         <source>Set the Rectangle as the paint tool</source>
         <translation>Wähle ausgefülltes Rechteck als Werkzeug</translation>
     </message>
@@ -613,12 +740,12 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>RedoTool</name>
     <message>
-        <location filename="../src/tools/redo/redotool.cpp" line="34"/>
+        <location filename="../src/tools/redo/redotool.cpp" line="37"/>
         <source>Redo</source>
         <translation>Wiederholen</translation>
     </message>
     <message>
-        <location filename="../src/tools/redo/redotool.cpp" line="42"/>
+        <location filename="../src/tools/redo/redotool.cpp" line="45"/>
         <source>Redo the next modification</source>
         <translation>Wiederhole die nächste Veränderung</translation>
     </message>
@@ -626,12 +753,12 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>SaveTool</name>
     <message>
-        <location filename="../src/tools/save/savetool.cpp" line="35"/>
+        <location filename="../src/tools/save/savetool.cpp" line="39"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="../src/tools/save/savetool.cpp" line="43"/>
+        <location filename="../src/tools/save/savetool.cpp" line="47"/>
         <source>Save the capture</source>
         <translation>Speichere die Aufnahme</translation>
     </message>
@@ -647,12 +774,12 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="38"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="41"/>
         <source>Rectangular Selection</source>
         <translation>Rechteckige Auswahl</translation>
     </message>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="46"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="49"/>
         <source>Set Selection as the paint tool</source>
         <translation>Wähle Rechteck als Werkzeug</translation>
     </message>
@@ -804,7 +931,7 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>SystemNotification</name>
     <message>
-        <location filename="../src/utils/systemnotification.cpp" line="28"/>
+        <location filename="../src/utils/systemnotification.cpp" line="29"/>
         <source>Flameshot Info</source>
         <translation>Flameshot Info</translation>
     </message>
@@ -835,12 +962,16 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>TextTool</name>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="50"/>
         <source>Text</source>
-        <translation>Text</translation>
+        <translation type="vanished">Text</translation>
     </message>
     <message>
-        <location filename="../src/tools/text/texttool.cpp" line="58"/>
+        <location filename="../src/tools/text/texttool.cpp" line="53"/>
+        <source>text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tools/text/texttool.cpp" line="61"/>
         <source>Add text to your capture</source>
         <translation>Füge Text zur Auswahl hinzu</translation>
     </message>
@@ -886,12 +1017,16 @@ Drücke die Leertaste um das Seitenmenü zu öffnen.</translation>
 <context>
     <name>UndoTool</name>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="34"/>
         <source>Undo</source>
-        <translation>Verwerfen</translation>
+        <translation type="vanished">Verwerfen</translation>
     </message>
     <message>
-        <location filename="../src/tools/undo/undotool.cpp" line="42"/>
+        <location filename="../src/tools/undo/undotool.cpp" line="38"/>
+        <source>undo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tools/undo/undotool.cpp" line="46"/>
         <source>Undo the last modification</source>
         <translation>Letzte Änderung verwerfen</translation>
     </message>

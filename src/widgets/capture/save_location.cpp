@@ -59,6 +59,13 @@ void Save_Location::setCenterWidget(QWidget *widget)
     vLayout->addLayout(hMainLayout,Qt::AlignCenter);
     vLayout->setSpacing(0);
     vLayout->setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH + TRIANGLE_WIDTH, SHADOW_WIDTH+5, SHADOW_WIDTH);
+    connect(jpg,&QRadioButton::clicked,
+            this,&Save_Location::save_type_click);
+    connect(png,&QRadioButton::clicked,
+            this,&Save_Location::save_type_click);
+    connect(bmp,&QRadioButton::clicked,
+            this,&Save_Location::save_type_click);
+
 }
 void Save_Location::setTriangleInfo(int width, int height)
 {
@@ -86,4 +93,7 @@ void Save_Location::paintEvent(QPaintEvent *event)
     painter.drawPath(drawPath);
     painter.drawText(20,50,"111111111");
 }
-
+void Save_Location::save_type_click()
+{
+    emit save_type_clicked();
+}

@@ -71,6 +71,8 @@ public slots:
     void deleteToolwidgetOrClose();
     void ClickedSavedir();
     void ClickedSavedir2();
+    void ClickedSaveType();
+    void ClickedSaveType2();
 signals:
     void captureTaken(uint id, QPixmap p);
     void captureFailed(uint id);

@@ -160,7 +160,6 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
                      this,SLOT(font_underline_clicked(bool)));
     connect(font_options,SIGNAL(font_delete_change(bool)),
                      this,SLOT(font_delete_clicked(bool)));
-
     connect(font_options2,&Font_Options2::font_size_Selete,
                     this,&CaptureWidget::setDrawThickness);
     connect(font_options2,&Font_Options2::font_type_Selete,
@@ -173,7 +172,10 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
                      this,SLOT(font_underline_clicked(bool)));
     connect(font_options2,SIGNAL(font_delete_change(bool)),
                      this,SLOT(font_delete_clicked(bool)));
-
+    connect(save_location,&Save_Location::save_type_clicked,
+                this,&CaptureWidget::ClickedSaveType);
+    connect(save_location2,&Save_Location2::save_type_clicked,
+                this,&CaptureWidget::ClickedSaveType2);
     m_colorPicker->hide();
     font_color->setStartPos(80);
     font_color->setTriangleInfo(20, 20);
@@ -355,8 +357,8 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
 
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
             painter.drawRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(), GlobalValues::buttonBaseSize()*20+2, GlobalValues::buttonBaseSize()+2);
-            painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3,
-                                    m_selection->geometry().intersected(rect()).y()+GlobalValues::buttonBaseSize()/3,
+            painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3-2,
+                                    m_selection->geometry().intersected(rect()).y()+GlobalValues::buttonBaseSize()/3-1,
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize(),
                                     GlobalValues::buttonBaseSize()/2,
@@ -716,7 +718,7 @@ void CaptureWidget::initSelection() {
     m_selection->setVisible(false);
     m_selection->setGeometry(QRect());
 }
-     void CaptureWidget::setState(CaptureButton *b) {
+void CaptureWidget::setState(CaptureButton *b) {
     if (!b) {
         return;
     }
@@ -769,8 +771,6 @@ void CaptureWidget::initSelection() {
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_options->move(font_color_point->x(),font_color_point->y());
                     font_options->show();
-                   //connect(font_options,SIGNAL(&font_options->Font_type->currentFontChanged),b->tool(),SLOT(&b->tool()::setFont));
-                   //connect(font_options,&font_options::Font_size::valueChanged,b->tool(),&b->tool()->));
                     qDebug()<<"aaaaaaaaaaaaa2222";
                 }
                 else
@@ -1079,7 +1079,8 @@ void CaptureWidget::initSelection() {
                  }
                  m_activeButton = b;
                  m_activeButton->setColor(m_contrastUiColor);
-             } else if (m_activeButton) {
+             }
+        else if (m_activeButton) {
                  m_panel->clearToolWidget();
                  m_activeButton->setColor(m_uiColor);
                  b->setIcon(b->tool()->icon(m_uiColor,false));
@@ -1497,4 +1498,38 @@ void CaptureWidget::initSelection() {
      void CaptureWidget::font_italic_clicked(bool b)
      {
          m_context.italic =b;
+     }
+     void CaptureWidget::ClickedSaveType()
+     {
+         if (save_location->png->isChecked())
+         {
+             m_context.saveType =".png";
+         }
+         else if(save_location->bmp->isChecked())
+         {
+             save_location->png->setChecked(false);
+             m_context.saveType =".bmp";
+         }
+         else if(save_location->jpg->isChecked())
+         {
+             save_location->png->setChecked(false);
+             m_context.saveType =".jpg";
+         }
+     }
+     void CaptureWidget::ClickedSaveType2()
+     {
+         if (save_location2->png->isChecked())
+         {
+             m_context.saveType =".png";
+         }
+         else if(save_location2->bmp->isChecked())
+         {
+             save_location2->png->setChecked(false);
+             m_context.saveType =".bmp";
+         }
+         else if(save_location2->jpg->isChecked())
+         {
+             save_location2->png->setChecked(false);
+             m_context.saveType =".jpg";
+         }
      }

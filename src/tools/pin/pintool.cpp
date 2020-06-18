@@ -30,8 +30,8 @@ QIcon PinTool::icon(const QColor &background, bool inEditor) const {
    // Q_UNUSED(inEditor);
     //return QIcon(iconPath(background) + "pin.svg");
     Q_UNUSED(background);
-    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pin.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "pin.svg");
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "pin_icon.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "pin_icon.svg");
 }
 QString PinTool::name() const {
     return tr("Pin Tool");
