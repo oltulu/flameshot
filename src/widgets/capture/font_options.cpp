@@ -13,6 +13,10 @@ Font_Options::Font_Options(QWidget *parent)
     , m_triangleWidth(TRIANGLE_WIDTH)
     , m_triangleHeight(TRIANGLE_HEIGHT)
     , radius(6)
+    ,Delete(false)
+    ,Underline(false)
+    ,bold(false)
+    ,italic(false)
 {
     setCursor(Qt::ArrowCursor);
     setWindowFlag(Qt::FramelessWindowHint);
@@ -38,7 +42,6 @@ Font_Options::Font_Options(QWidget *parent)
           m_colorAreaList.append(QRect(Start_x,Start_y,20,20));
           Start_x += 25;
      }
-        Delete=Underline=bold=italic=false;
 }
 void Font_Options::setStartPos(int startX)
 {
@@ -64,28 +67,27 @@ void Font_Options::setCenterWidget(QWidget *widget)
     delete_btn = new QPushButton(this);
     delete_btn->setToolTip("添加删除线");
     delete_btn->setStyleSheet("QPushButton{background-color:white}");
-    delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete_font.svg"));
+    delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete.png"));
     delete_btn->move(20,90);
     Underline_btn= new QPushButton(this);
     Underline_btn->setStyleSheet("QPushButton{background-color:white}");
-    Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "format_underline.svg"));
+    Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "underline.png"));
     Underline_btn->move(70,90);
     Underline_btn->setToolTip("添加下划线");
     bold_btn = new QPushButton(this);
     bold_btn->setStyleSheet("QPushButton{background-color:white}");
-    bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold_font.svg"));
+    bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold.png"));
     bold_btn->move(120,90);
     bold_btn->setToolTip("加粗文字");
     Italic_btn = new QPushButton(this);
     Italic_btn->setStyleSheet("QPushButton{background-color:white}");
-    Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic_font.svg"));
+    Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic.png"));
     Italic_btn->move(170,90);
     Italic_btn->setToolTip("斜体");
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
     connect(Font_type,SIGNAL(currentFontChanged(QFont)),
             this,SLOT(font_type_change(QFont)));
-
     connect(delete_btn,&QPushButton::clicked,
             this,&Font_Options::font_delete_selete);
     connect(Underline_btn,&QPushButton::clicked,
@@ -94,7 +96,6 @@ void Font_Options::setCenterWidget(QWidget *widget)
             this,&Font_Options::font_italic_selete);
     connect(bold_btn,&QPushButton::clicked,
             this,&Font_Options::font_bold_selete);
-
 }
 void Font_Options::paintEvent(QPaintEvent *event)
 {
@@ -128,6 +129,30 @@ void Font_Options::paintEvent(QPaintEvent *event)
         painter.setBrush(color1);
         painter.drawRect(m_colorAreaList.at(i));
     }
+    if (bold)
+         bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "bold_active.png"));
+    else {
+        bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold.png"));
+    }
+    if (Delete)
+    {
+         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "delete_active.png"));
+    }
+    else {
+         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete.png"));
+    }
+    if (italic)
+         Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "italic_active.png"));
+    else {
+        Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic.png"));
+    }
+    if (Underline)
+    {
+         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "underline_active.png"));
+     }
+    else {
+         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "underline.png"));
+    }
 }
 void Font_Options::mousePressEvent(QMouseEvent *e)
 {
@@ -154,9 +179,9 @@ void Font_Options::font_bold_selete()
 {
     bold = !bold;
     if (bold)
-         bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "bold.svg"));
+         bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "bold_active.png"));
     else {
-        bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold_font.svg"));
+        bold_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "bold.png"));
     }
     emit font_bold_change(bold);
 }
@@ -164,9 +189,9 @@ void Font_Options::font_delete_selete()
 {
     Delete = !Delete;
     if (Delete)
-         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "delete.svg"));
+         delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "delete_active.png"));
     else {
-        delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete_font.svg"));
+        delete_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "delete.png"));
     }
     emit font_delete_change(Delete);
 }
@@ -174,9 +199,9 @@ void Font_Options::font_underline_selete()
 {
     Underline = !Underline;
     if (Underline)
-         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "underline.svg"));
+         Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "underline_active.png"));
     else {
-        Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "format_underline.svg"));
+        Underline_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "underline.png"));
     }
     emit font_underline_change(Underline);
 }
@@ -184,9 +209,9 @@ void Font_Options::font_italic_selete()
 {
     italic = !italic;
     if (italic)
-         Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "italic.svg"));
+         Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/black/") + "italic_active.png"));
     else {
-        Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic_font.svg"));
+        Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic.png"));
     }
     emit font_italic_change(italic);
 }

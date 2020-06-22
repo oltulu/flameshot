@@ -69,5 +69,13 @@
         <file>img/material/white/format-text.svg</file>
         <file>img/material/white/down.svg</file>
         <file>img/material/white/pin_icon.svg</file>
+        <file>img/material/white/bold.png</file>
+        <file>img/material/black/italic_active.png</file>
+        <file>img/material/black/bold_active.png</file>
+        <file>img/material/black/delete_active.png</file>
+        <file>img/material/black/underline_active.png</file>
+        <file>img/material/white/italic.png</file>
+        <file>img/material/white/underline.png</file>
+        <file>img/material/white/delete.png</file>
     </qresource>
 </RCC>

@@ -47,6 +47,7 @@ private:
     double Rect_x,Rect_y;
     double Start_x, Start_y;
     QFrame *line1;
+public:
     QColor color;
     QRect color_rect;
 };

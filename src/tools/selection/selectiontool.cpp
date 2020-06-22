@@ -34,8 +34,9 @@ QIcon SelectionTool::icon(const QColor &background, bool inEditor) const {
    // Q_UNUSED(inEditor);
    // return QIcon(iconPath(background) + "square-outline.svg");
     Q_UNUSED(background);
-    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square-outline.svg") :
-                      QIcon(QStringLiteral(":/img/material/white/") + "square-outline.svg");
+    return inEditor ?  QIcon(QStringLiteral(":/img/material/black/") + "square.svg") :
+                      QIcon(QStringLiteral(":/img/material/white/") + "square.svg");
+
 }
 QString SelectionTool::name() const {
     return tr("Rectangular Selection");

@@ -57,7 +57,10 @@ CaptureTool* ToolFactory::CreateTool(
         tool = new LuPing(parent);
         break;
     case CaptureButton::TYPE_RECT:
-        tool = new RectangleTool(parent);
+        //空心矩形   矩形选择框
+        tool = new  SelectionTool(parent);
+        //实心矩形
+        //tool = new RectangleTool(parent);
         break;
     case CaptureButton::TYPE_CIRCLE:
         tool = new CircleTool(parent);

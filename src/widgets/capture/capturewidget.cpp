@@ -763,6 +763,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                 if (b->y()+175 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
                     font_options->Font_size->setValue(m_context.thickness);
+                    font_options->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -770,12 +771,17 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setY(b->y()+30);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_options->move(font_color_point->x(),font_color_point->y());
+                    font_options->Underline = m_context.underline;
+                    font_options->italic = m_context.italic;
+                    font_options->bold = m_context.bold;
+                    font_options->Delete = m_context.deleteline;
                     font_options->show();
-                    qDebug()<<"aaaaaaaaaaaaa2222";
+
                 }
                 else
                 {
                     font_options2->Font_size->setValue(m_context.thickness);
+                    font_options2->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -783,15 +789,18 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setY(b->y()-175);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_options2->move(font_color_point->x(),font_color_point->y());
+                    font_options2->Underline = m_context.underline;
+                    font_options2->italic = m_context.italic;
+                    font_options2->bold = m_context.bold;
+                    font_options2->Delete = m_context.deleteline;
                     font_options2->show();
-                    //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
-                    qDebug()<<"aaaaaaaaaaaaa2222";
                 }
             }
             else  if (b->tool()->name() != "Cut" && b->tool()->name() != "undo")
             {
                 if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
+                    font_color->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -803,6 +812,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                 }
                 else
                 {
+                    font_color2->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -842,7 +852,12 @@ void CaptureWidget::setState(CaptureButton *b) {
             {
                 if (b->y()- 165 >= 0)
                 {
-                    font_options->Font_size->setValue(m_context.thickness);
+                    font_options2->Font_size->setValue(m_context.thickness);
+                    font_options2->color = m_context.color;
+                    font_options2->Underline = m_context.underline;
+                    font_options2->italic = m_context.italic;
+                    font_options2->bold = m_context.bold;
+                    font_options2->Delete = m_context.deleteline;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -851,12 +866,17 @@ void CaptureWidget::setState(CaptureButton *b) {
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_options2->move(font_color_point->x(),font_color_point->y());
                     font_options2->show();
-                    //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
+
                     qDebug()<<"aaaaaaaaaaaaa2222";
                 }
                 else
                 {
-                    font_options2->Font_size->setValue(m_context.thickness);
+                    font_options->Font_size->setValue(m_context.thickness);
+                    font_options->color = m_context.color;
+                    font_options->Underline = m_context.underline;
+                    font_options->italic = m_context.italic;
+                    font_options->bold = m_context.bold;
+                    font_options->Delete = m_context.deleteline;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -873,6 +893,7 @@ void CaptureWidget::setState(CaptureButton *b) {
             {
                 if (b->y()-150 >= 0)
                 {
+                    font_color2->color = m_context.color;
                     save_location->hide();
                     save_location2->hide();
                     font_color_point->setX(b->x()-80);
@@ -883,6 +904,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                 }
                 else
                 {
+                    font_color->color = m_context.color;
                     save_location->hide();
                     save_location2->hide();
                     font_color_point->setX(b->x()-80);
@@ -947,6 +969,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                         if (b->y()+175 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
                             font_options->Font_size->setValue(m_context.thickness);
+                            font_options->color = m_context.color;
+                            font_options->Underline = m_context.underline;
+                            font_options->italic = m_context.italic;
+                            font_options->bold = m_context.bold;
+                            font_options->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -959,6 +986,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                         else
                         {
                             font_options2->Font_size->setValue(m_context.thickness);
+                            font_options2->color = m_context.color;
+                            font_options2->Underline = m_context.underline;
+                            font_options2->italic = m_context.italic;
+                            font_options2->bold = m_context.bold;
+                            font_options2->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -975,6 +1007,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     {
                         if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
+                            font_color->color = m_context.color;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -986,6 +1019,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                         }
                         else
                         {
+                            font_color2->color = m_context.color;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1026,6 +1060,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                         if (b->y()- 165 >= 0)
                         {
                             font_options2->Font_size->setValue(m_context.thickness);
+                            font_options2->color = m_context.color;
+                            font_options2->Underline = m_context.underline;
+                            font_options2->italic = m_context.italic;
+                            font_options2->bold = m_context.bold;
+                            font_options2->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1039,7 +1078,12 @@ void CaptureWidget::setState(CaptureButton *b) {
                         }
                         else
                         {
-                            font_options2->Font_size->setValue(m_context.thickness);
+                            font_options->Font_size->setValue(m_context.thickness);
+                            font_options->color = m_context.color;
+                            font_options->Underline = m_context.underline;
+                            font_options->italic = m_context.italic;
+                            font_options->bold = m_context.bold;
+                            font_options->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1056,6 +1100,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     {
                         if (b->y()-150 >= 0)
                         {
+                            font_color2->color = m_context.color;
                             save_location->hide();
                             save_location2->hide();
                             font_color_point->setX(b->x()-80);
@@ -1066,6 +1111,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                         }
                         else
                         {
+                            font_color->color = m_context.color;
                             save_location->hide();
                             save_location2->hide();
                             font_color_point->setX(b->x()-80);
@@ -1494,6 +1540,7 @@ void CaptureWidget::setState(CaptureButton *b) {
      void CaptureWidget::font_underline_clicked(bool b)
      {
          m_context.underline =b;
+
      }
      void CaptureWidget::font_italic_clicked(bool b)
      {
