@@ -144,8 +144,8 @@ Press Space to open the side panel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1394"/>
-        <location filename="../src/widgets/capture/capturewidget.cpp" line="1439"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1440"/>
+        <location filename="../src/widgets/capture/capturewidget.cpp" line="1485"/>
         <source>Open Directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -231,8 +231,12 @@ Press Space to open the side panel.</source>
     <name>Cut</name>
     <message>
         <location filename="../src/tools/cut/cut.cpp" line="20"/>
-        <location filename="../src/tools/cut/cut.cpp" line="28"/>
         <source>Cut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/tools/cut/cut.cpp" line="28"/>
+        <source>cut</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -303,6 +307,52 @@ Press Space to open the side panel.</source>
         <location filename="../src/config/filenameeditor.cpp" line="91"/>
         <source>Deletes the name</source>
         <translation>სახელის წაშლა</translation>
+    </message>
+</context>
+<context>
+    <name>Font_Options</name>
+    <message>
+        <location filename="../src/widgets/capture/font_options.cpp" line="68"/>
+        <source>StrikeOut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/font_options.cpp" line="77"/>
+        <source>Underline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/font_options.cpp" line="83"/>
+        <source>Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/font_options.cpp" line="89"/>
+        <source>Italic</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Font_Options2</name>
+    <message>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="81"/>
+        <source>StrikeOut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="82"/>
+        <source>Underline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="83"/>
+        <source>Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="84"/>
+        <source>Italic</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -595,12 +645,12 @@ Press Space to open the side panel.</source>
     <name>LuPing</name>
     <message>
         <location filename="../src/tools/luping/luping.cpp" line="20"/>
-        <source>录屏</source>
+        <source>LuPing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/tools/luping/luping.cpp" line="28"/>
-        <source>LuPing</source>
+        <source>luping</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -639,7 +689,7 @@ Press Space to open the side panel.</source>
     </message>
     <message>
         <location filename="../src/tools/options/options.cpp" line="28"/>
-        <source>图片保存配置</source>
+        <source>options tool</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -770,12 +820,12 @@ Press Space to open the side panel.</source>
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="41"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="42"/>
         <source>Rectangular Selection</source>
         <translation>მართკუთხა შერჩევა</translation>
     </message>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="49"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="50"/>
         <source>Set Selection as the paint tool</source>
         <translation>შერჩევის ხელსაწყოს არჩევა სახატავად</translation>
     </message>

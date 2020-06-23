@@ -149,7 +149,7 @@ Press Space to open the side panel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1038"/>
+        <location line="+1084"/>
         <location line="+45"/>
         <source>Open Directory</source>
         <translation type="unfinished"></translation>
@@ -236,9 +236,20 @@ Press Space to open the side panel.</source>
     <name>Cut</name>
     <message>
         <location filename="../src/tools/cut/cut.cpp" line="+20"/>
-        <location line="+8"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>cut</source>
+        <translation type="unfinished">截图模式</translation>
+    </message>
+</context>
+<context>
+    <name>CutTool</name>
+    <message>
+        <source>cut</source>
+        <translation type="vanished">截图模式</translation>
     </message>
 </context>
 <context>
@@ -308,6 +319,52 @@ Press Space to open the side panel.</source>
         <location line="+4"/>
         <source>Deletes the name</source>
         <translation>删除这个名字</translation>
+    </message>
+</context>
+<context>
+    <name>Font_Options</name>
+    <message>
+        <location filename="../src/widgets/capture/font_options.cpp" line="+68"/>
+        <source>StrikeOut</source>
+        <translation type="unfinished">删除线</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Underline</source>
+        <translation type="unfinished">下划线</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bold</source>
+        <translation type="unfinished">粗体</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Italic</source>
+        <translation type="unfinished">斜体</translation>
+    </message>
+</context>
+<context>
+    <name>Font_Options2</name>
+    <message>
+        <location filename="../src/widgets/capture/font_options2.cpp" line="+81"/>
+        <source>StrikeOut</source>
+        <translation type="unfinished">删除线</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Underline</source>
+        <translation type="unfinished">下划线</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bold</source>
+        <translation type="unfinished">粗体</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Italic</source>
+        <translation type="unfinished">斜体</translation>
     </message>
 </context>
 <context>
@@ -600,13 +657,13 @@ Press Space to open the side panel.</source>
     <name>LuPing</name>
     <message>
         <location filename="../src/tools/luping/luping.cpp" line="+20"/>
-        <source>录屏</source>
+        <source>LuPing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
-        <source>LuPing</source>
-        <translation type="unfinished"></translation>
+        <source>luping</source>
+        <translation type="unfinished">录屏模式</translation>
     </message>
 </context>
 <context>
@@ -644,8 +701,8 @@ Press Space to open the side panel.</source>
     </message>
     <message>
         <location line="+8"/>
-        <source>图片保存配置</source>
-        <translation type="unfinished"></translation>
+        <source>options tool</source>
+        <translation>截图保存配置</translation>
     </message>
 </context>
 <context>
@@ -783,7 +840,7 @@ Press Space to open the side panel.</source>
 <context>
     <name>SelectionTool</name>
     <message>
-        <location filename="../src/tools/selection/selectiontool.cpp" line="+41"/>
+        <location filename="../src/tools/selection/selectiontool.cpp" line="+42"/>
         <source>Rectangular Selection</source>
         <translation>矩形选择</translation>
     </message>
@@ -1056,6 +1113,13 @@ Press Space to open the side panel.</source>
         <location line="+6"/>
         <source>Select All</source>
         <translation>全选</translation>
+    </message>
+</context>
+<context>
+    <name>luping</name>
+    <message>
+        <source>luping</source>
+        <translation type="vanished">录屏模式</translation>
     </message>
 </context>
 </TS>

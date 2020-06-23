@@ -78,10 +78,14 @@ void Font_Options2::setCenterWidget(QWidget *widget)
     Italic_btn = new QPushButton(this);
     Italic_btn->setIcon(QIcon(QStringLiteral(":/img/material/white/") + "italic.png"));
     Italic_btn->move(155,60);
-    delete_btn->setToolTip("添加删除线");
-    Underline_btn->setToolTip("添加下划线");
-    bold_btn->setToolTip("加粗文字");
-    Italic_btn->setToolTip("斜体");
+    delete_btn->setToolTip(tr("StrikeOut"));
+    Underline_btn->setToolTip(tr("Underline"));
+    bold_btn->setToolTip(tr("Bold"));
+    Italic_btn->setToolTip(tr("Italic"));
+    delete_btn->setFixedSize(50,20);
+    Underline_btn->setFixedSize(50,20);
+    bold_btn->setFixedSize(50,20);
+    Italic_btn->setFixedSize(50,20);
     connect(Font_size,SIGNAL(valueChanged(int)),
             this,SLOT(font_size_change(int)));
     connect(Font_type,SIGNAL(currentFontChanged(QFont)),

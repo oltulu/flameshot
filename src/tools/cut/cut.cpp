@@ -25,7 +25,7 @@ QString  Cut::nameID()
 }
 QString Cut::description() const
 {
-    return tr("Cut");
+    return tr("cut");
 }
 
 CaptureTool* Cut::copy(QObject *parent)

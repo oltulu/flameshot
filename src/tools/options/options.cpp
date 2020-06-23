@@ -25,7 +25,8 @@ QString Options::nameID()
 }
 QString Options::description() const
 {
-    return tr("图片保存配置");
+    return tr("options tool");
+    //return tr("图片保存配置");
 }
 
 CaptureTool* Options::copy(QObject *parent)
