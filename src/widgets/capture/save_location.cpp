@@ -58,7 +58,7 @@ void Save_Location::setCenterWidget(QWidget *widget)
     vLayout->addWidget(savetype);
     vLayout->addLayout(hMainLayout,Qt::AlignCenter);
     vLayout->setSpacing(0);
-    vLayout->setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH + TRIANGLE_WIDTH, SHADOW_WIDTH+5, SHADOW_WIDTH);
+    vLayout->setContentsMargins(SHADOW_WIDTH,SHADOW_WIDTH, SHADOW_WIDTH, SHADOW_WIDTH);
     connect(jpg,&QRadioButton::clicked,
             this,&Save_Location::save_type_click);
     connect(png,&QRadioButton::clicked,

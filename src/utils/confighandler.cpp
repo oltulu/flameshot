@@ -121,7 +121,7 @@ void ConfigHandler::setSavePath(const QString &savePath) {
 }
 
 QColor ConfigHandler::uiMainColorValue() {
-    QColor res = QColor(116, 0, 150);
+    QColor res = QColor(25,25,25);
 
     if (m_settings.contains(QStringLiteral("uiColor"))) {
         QString hex = m_settings.value(QStringLiteral("uiColor")).toString();
@@ -302,7 +302,7 @@ void ConfigHandler::setStartupLaunch(const bool start) {
 }
 
 int ConfigHandler::contrastOpacityValue() {
-    int opacity = 50;
+    int opacity = 100;
     if (m_settings.contains(QStringLiteral("contrastOpacity"))) {
         opacity = m_settings.value(QStringLiteral("contrastOpacity")).toInt();
         opacity = qBound(0, opacity, 255);

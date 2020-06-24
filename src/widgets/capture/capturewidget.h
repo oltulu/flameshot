@@ -106,6 +106,11 @@ private slots:
     void  font_bold_clicked(bool);
     void  font_delete_clicked(bool);
     void  font_underline_clicked(bool);
+
+    void font_options_defult();
+    void font_options2_defult();
+    void fontsize_color_chose_default();
+    void fontsize_color_chose2_default();
 protected:
     void paintEvent(QPaintEvent *);
     void mousePressEvent(QMouseEvent *);

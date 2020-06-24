@@ -186,7 +186,7 @@ CaptureWidget::CaptureWidget(const uint id, const QString &savePath,
     font_color2->setFixedSize(QSize(225, 150));
     save_location->setStartPos(100);
     save_location->setTriangleInfo(10, 10);
-    save_location->setFixedSize(QSize(170, 175));
+    save_location->setFixedSize(QSize(165, 175));
     save_location->setCenterWidget();
 
     save_location2->setStartPos(90);
@@ -238,7 +238,6 @@ void CaptureWidget::updateButtons() {
         /*if (t == CaptureButton::TYPE_SELECTIONINDICATOR) {
             m_sizeIndButton = b;
         }*/
-
         if (t == CaptureButton::TYPE_OPTION) {
             m_sizeIndButton = b;
             m_sizeIndButton->setColor(Qt::black);
@@ -287,9 +286,11 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
     if (m_context.mousePos.x()< m_selection->x()||m_context.mousePos.x()>m_selection->x()+m_selection->width()
             ||m_context.mousePos.y()< m_selection->y()||m_context.mousePos.y()>m_selection->y()+m_selection->height()+m_buttonHandler->size()+20)
        {
-           painter.drawPixmap(m_context.mousePos.x()+20,m_context.mousePos.y()+20,pixmap2);
+           painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,pixmap2);
            painter.setOpacity(0.5);
-           painter.drawPixmap(m_context.mousePos.x()+20,m_context.mousePos.y()+20,crosspixmap);
+           painter.drawPixmap(m_context.mousePos.x()+10,m_context.mousePos.y()+10,crosspixmap);
+            painter.drawText(m_context.mousePos.x()+10,m_context.mousePos.y()+130,tr("%1 , %2")
+                             .arg(m_context.mousePos.x()).arg(m_context.mousePos.y()));
            update();
        }
     if (m_activeTool && m_mouseIsClicked) {
@@ -353,10 +354,12 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         //painter.setBrush(m_uiColor);
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
-        painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2").arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
+        painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2")
+                         .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
 
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
-            painter.drawRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(), GlobalValues::buttonBaseSize()*20+2, GlobalValues::buttonBaseSize()+2);
+            painter.drawRoundRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
+                                  GlobalValues::buttonBaseSize()*20+2,GlobalValues::buttonBaseSize()+2,6,6);
             painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3-2,
                                     m_selection->geometry().intersected(rect()).y()+GlobalValues::buttonBaseSize()/3-1,
                                     GlobalValues::buttonBaseSize(),
@@ -364,6 +367,7 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                                     GlobalValues::buttonBaseSize()/2,
                                     GlobalValues::buttonBaseSize()/2);
             painter.setBrush(QColor(0,0,0));
+            //两个分隔符
             painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*12+12,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1, GlobalValues::buttonBaseSize()/2);
             painter.drawRect(vectorButtons.first()->pos().x()+GlobalValues::buttonBaseSize()*16-9,vectorButtons.first()->pos().y()+GlobalValues::buttonBaseSize()/4, 1,GlobalValues::buttonBaseSize()/2);
         }
@@ -430,9 +434,9 @@ void CaptureWidget::mousePressEvent(QMouseEvent *e) {
 
 void CaptureWidget::mouseMoveEvent(QMouseEvent *e) {
     m_context.mousePos = e->pos();
-    mypixmap = mypixmap.grabWidget(this,e->pos().x(),e->pos().y(),32,32);
-    w = 32;
-    h = 32;
+    w = 25;
+    h = 25;
+    mypixmap = mypixmap.grabWidget(this,e->pos().x(),e->pos().y(),w,h);
     QImage crosstmp=mypixmap.toImage();
     QRgb value = qRgb(0,0,255);
     for(int i=0;i<w;i++)
@@ -648,7 +652,7 @@ void CaptureWidget::wheelEvent(QWheelEvent *e) {
     if (m_activeButton && m_activeButton->tool()->showMousePreview()) {
         update();
     }
-   // emit thicknessChanged(m_context.thickness);
+    emit thicknessChanged(m_context.thickness);
 }
 
 void CaptureWidget::resizeEvent(QResizeEvent *e) {
@@ -762,8 +766,6 @@ void CaptureWidget::setState(CaptureButton *b) {
             {
                 if (b->y()+175 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
-                    font_options->Font_size->setValue(m_context.thickness);
-                    font_options->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -771,28 +773,19 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setY(b->y()+30);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_options->move(font_color_point->x(),font_color_point->y());
-                    font_options->Underline = m_context.underline;
-                    font_options->italic = m_context.italic;
-                    font_options->bold = m_context.bold;
-                    font_options->Delete = m_context.deleteline;
+                    font_options_defult();
                     font_options->show();
 
                 }
                 else
                 {
-                    font_options2->Font_size->setValue(m_context.thickness);
-                    font_options2->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
                     font_color_point->setX(b->x()-80);
                     font_color_point->setY(b->y()-175);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
-                    font_options2->move(font_color_point->x(),font_color_point->y());
-                    font_options2->Underline = m_context.underline;
-                    font_options2->italic = m_context.italic;
-                    font_options2->bold = m_context.bold;
-                    font_options2->Delete = m_context.deleteline;
+                    font_options2_defult();
                     font_options2->show();
                 }
             }
@@ -800,7 +793,6 @@ void CaptureWidget::setState(CaptureButton *b) {
             {
                 if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                 {
-                    font_color->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -808,11 +800,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setY(b->y()+30);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_color->move(font_color_point->x(),font_color_point->y());
+                    fontsize_color_chose_default();
                     font_color->show();
                 }
                 else
                 {
-                    font_color2->color = m_context.color;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -820,6 +812,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setY(b->y()-150);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_color2->move(font_color_point->x(),font_color_point->y());
+                    fontsize_color_chose2_default();
                     font_color2->show();
                 }
             }
@@ -852,12 +845,6 @@ void CaptureWidget::setState(CaptureButton *b) {
             {
                 if (b->y()- 165 >= 0)
                 {
-                    font_options2->Font_size->setValue(m_context.thickness);
-                    font_options2->color = m_context.color;
-                    font_options2->Underline = m_context.underline;
-                    font_options2->italic = m_context.italic;
-                    font_options2->bold = m_context.bold;
-                    font_options2->Delete = m_context.deleteline;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -865,18 +852,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setY(b->y()-175);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_options2->move(font_color_point->x(),font_color_point->y());
+                    font_options2_defult();
                     font_options2->show();
-
-                    qDebug()<<"aaaaaaaaaaaaa2222";
                 }
                 else
                 {
-                    font_options->Font_size->setValue(m_context.thickness);
-                    font_options->color = m_context.color;
-                    font_options->Underline = m_context.underline;
-                    font_options->italic = m_context.italic;
-                    font_options->bold = m_context.bold;
-                    font_options->Delete = m_context.deleteline;
                     save_location2->hide();
                     save_location->hide();
                     font_color->hide();
@@ -884,6 +864,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setY(b->y()+30);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_options->move(font_color_point->x(),font_color_point->y());
+                    font_options_defult();
                     font_options->show();
                 //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
                     qDebug()<<"aaaaaaaaaaaaa2222";
@@ -893,24 +874,24 @@ void CaptureWidget::setState(CaptureButton *b) {
             {
                 if (b->y()-150 >= 0)
                 {
-                    font_color2->color = m_context.color;
                     save_location->hide();
                     save_location2->hide();
                     font_color_point->setX(b->x()-80);
                     font_color_point->setY(b->y()-150);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_color2->move(font_color_point->x(),font_color_point->y());
+                    fontsize_color_chose2_default();
                     font_color2->show();
                 }
                 else
                 {
-                    font_color->color = m_context.color;
                     save_location->hide();
                     save_location2->hide();
                     font_color_point->setX(b->x()-80);
                     font_color_point->setY(b->y()+30);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                     font_color->move(font_color_point->x(),font_color_point->y());
+                    fontsize_color_chose2_default();
                     font_color->show();
                 }
             }
@@ -968,12 +949,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     {
                         if (b->y()+175 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
-                            font_options->Font_size->setValue(m_context.thickness);
-                            font_options->color = m_context.color;
-                            font_options->Underline = m_context.underline;
-                            font_options->italic = m_context.italic;
-                            font_options->bold = m_context.bold;
-                            font_options->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -981,16 +956,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_color_point->setY(b->y()+30);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_options->move(font_color_point->x(),font_color_point->y());
+                            font_options_defult();
                             font_options->show();
                         }
                         else
                         {
-                            font_options2->Font_size->setValue(m_context.thickness);
-                            font_options2->color = m_context.color;
-                            font_options2->Underline = m_context.underline;
-                            font_options2->italic = m_context.italic;
-                            font_options2->bold = m_context.bold;
-                            font_options2->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -998,8 +968,8 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_color_point->setY(b->y()-175);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_options2->move(font_color_point->x(),font_color_point->y());
+                            font_options2_defult();
                             font_options2->show();
-                        //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                     }
@@ -1007,7 +977,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     {
                         if (b->y()+150 <= QGuiApplication::primaryScreen()->geometry().height())
                         {
-                            font_color->color = m_context.color;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1015,11 +984,11 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_color_point->setY(b->y()+30);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_color->move(font_color_point->x(),font_color_point->y());
+                            fontsize_color_chose_default();
                             font_color->show();
                         }
                         else
                         {
-                            font_color2->color = m_context.color;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1027,6 +996,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_color_point->setY(b->y()-150);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_color2->move(font_color_point->x(),font_color_point->y());
+                            fontsize_color_chose2_default();
                             font_color2->show();
                         }
                     }
@@ -1059,12 +1029,6 @@ void CaptureWidget::setState(CaptureButton *b) {
                     {
                         if (b->y()- 165 >= 0)
                         {
-                            font_options2->Font_size->setValue(m_context.thickness);
-                            font_options2->color = m_context.color;
-                            font_options2->Underline = m_context.underline;
-                            font_options2->italic = m_context.italic;
-                            font_options2->bold = m_context.bold;
-                            font_options2->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1072,18 +1036,13 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_color_point->setY(b->y()-175);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_options2->move(font_color_point->x(),font_color_point->y());
+                            font_options2_defult();
                             font_options2->show();
-                            //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
+
                             qDebug()<<"aaaaaaaaaaaaa2222";
                         }
                         else
                         {
-                            font_options->Font_size->setValue(m_context.thickness);
-                            font_options->color = m_context.color;
-                            font_options->Underline = m_context.underline;
-                            font_options->italic = m_context.italic;
-                            font_options->bold = m_context.bold;
-                            font_options->Delete = m_context.deleteline;
                             save_location2->hide();
                             save_location->hide();
                             font_color->hide();
@@ -1091,6 +1050,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                             font_color_point->setY(b->y()+30);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_options->move(font_color_point->x(),font_color_point->y());
+                            font_options2_defult();
                             font_options->show();
                         //connect(save_location->SaveDir,SIGNAL(pressed()),this,SLOT(ClickedSavedir()));
                             qDebug()<<"aaaaaaaaaaaaa2222";
@@ -1100,24 +1060,24 @@ void CaptureWidget::setState(CaptureButton *b) {
                     {
                         if (b->y()-150 >= 0)
                         {
-                            font_color2->color = m_context.color;
                             save_location->hide();
                             save_location2->hide();
                             font_color_point->setX(b->x()-80);
                             font_color_point->setY(b->y()-150);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_color2->move(font_color_point->x(),font_color_point->y());
+                            fontsize_color_chose2_default();
                             font_color2->show();
                         }
                         else
                         {
-                            font_color->color = m_context.color;
                             save_location->hide();
                             save_location2->hide();
                             font_color_point->setX(b->x()-80);
                             font_color_point->setY(b->y()+30);
                             b->setIcon(b->tool()->icon(m_contrastUiColor,true));
                             font_color->move(font_color_point->x(),font_color_point->y());
+                            fontsize_color_chose_default();
                             font_color->show();
                         }
                     }
@@ -1580,3 +1540,74 @@ void CaptureWidget::setState(CaptureButton *b) {
              m_context.saveType =".jpg";
          }
      }
+
+     void CaptureWidget::font_options_defult()
+     {
+         font_options->Font_size->setValue(m_context.thickness);
+         font_options->color = m_context.color;
+         font_options->Underline = m_context.underline;
+         font_options->italic = m_context.italic;
+         font_options->bold = m_context.bold;
+         font_options->Delete = m_context.deleteline;
+     }
+     void CaptureWidget::font_options2_defult()
+     {
+         font_options2->Font_size->setValue(m_context.thickness);
+         font_options2->color = m_context.color;
+         font_options2->Underline = m_context.underline;
+         font_options2->italic = m_context.italic;
+         font_options2->bold = m_context.bold;
+         font_options2->Delete = m_context.deleteline;
+
+     }
+     void CaptureWidget::fontsize_color_chose_default()
+     {
+          font_color->color = m_context.color;
+          int i = m_context.thickness;
+          if (i>= 0 && i < 10)
+          {
+              font_color->color_rect =font_color->m_colorAreaList.at(0);
+          }
+          else if (i >= 10 && i<20)
+          {
+              font_color->color_rect =font_color->m_colorAreaList.at(1);
+          }
+          else if (i >= 20 && i<30)
+          {
+              font_color->color_rect =font_color->m_colorAreaList.at(2);
+          }
+          else if (i >= 30)
+          {
+              font_color->color_rect =font_color->m_colorAreaList.at(3);
+          }
+          else
+          {
+                qDebug()<<"Error";
+          }
+     }
+     void CaptureWidget::fontsize_color_chose2_default()
+     {
+          font_color2->color = m_context.color;
+          int i = m_context.thickness;
+          if (i>= 0 && i < 10)
+          {
+              font_color2->color_rect =font_color2->m_colorAreaList.at(0);
+          }
+          else if (i >= 10 && i<20)
+          {
+              font_color2->color_rect =font_color2->m_colorAreaList.at(1);
+          }
+          else if (i >= 20 && i<30)
+          {
+              font_color2->color_rect =font_color2->m_colorAreaList.at(2);
+          }
+          else if (i >= 30)
+          {
+              font_color2->color_rect =font_color->m_colorAreaList.at(3);
+          }
+          else
+          {
+                qDebug()<<"Error";
+          }
+     }
+

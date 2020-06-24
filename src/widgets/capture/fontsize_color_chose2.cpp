@@ -48,7 +48,6 @@ FontSize_Color_Chose2::FontSize_Color_Chose2(QWidget *parent)
          m_colorAreaList.append(QRect(Start_x,Start_y,20,20));
          Start_x += 25;
     }
-
 }
 void FontSize_Color_Chose2::setStartPos(int startX)
 {
@@ -105,8 +104,8 @@ void FontSize_Color_Chose2::paintEvent(QPaintEvent *event)
 void FontSize_Color_Chose2::mousePressEvent(QMouseEvent *e) {
     for (int i = 0; i < 4; i++) {
         if (m_colorAreaList.at(i).contains(e->pos())) {
-           color_rect = m_colorAreaList.at(i);
-            emit font_size_change2(i*3) ;
+            color_rect = m_colorAreaList.at(i);
+            emit font_size_change2(i*8) ;
             update();
             break;
          }

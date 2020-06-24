@@ -59,9 +59,10 @@ void Font_Options2::setCenterWidget(QWidget *widget)
     Start_y = 30;
     Font_type = new  QFontComboBox(this);
     Font_type->setCurrentFont(QFont("华文黑体"));
-    //Font_size->setGeometry(Start_x,Start_y,100,20);
     Font_type->move(Start_x,Start_y);
     Font_size = new  QSpinBox(this);
+    Font_type->setFixedSize(150,25);
+    Font_size->setFixedSize(40,25);
     Font_size->setValue(2);
     Start_x  = 165;
     Start_y = 30;

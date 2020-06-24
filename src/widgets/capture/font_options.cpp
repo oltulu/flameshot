@@ -60,6 +60,8 @@ void Font_Options::setCenterWidget(QWidget *widget)
     Font_type->setCurrentFont(QFont("华文黑体"));
     Font_type->move(Start_x,Start_y);
     Font_size = new  QSpinBox(this);
+    Font_type->setFixedSize(150,25);
+    Font_size->setFixedSize(40,25);
     Font_size->setValue(2);
     Start_x  = 180;
     Start_y = 60;
