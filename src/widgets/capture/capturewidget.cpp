@@ -785,6 +785,7 @@ void CaptureWidget::setState(CaptureButton *b) {
                     font_color_point->setX(b->x()-80);
                     font_color_point->setY(b->y()-175);
                     b->setIcon(b->tool()->icon(m_contrastUiColor,true));
+                    font_options2->move(font_color_point->x(),font_color_point->y());
                     font_options2_defult();
                     font_options2->show();
                 }
