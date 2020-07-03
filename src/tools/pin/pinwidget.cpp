@@ -40,8 +40,9 @@ PinWidget::PinWidget(const QPixmap &pixmap, QWidget *parent) :
     m_layout->setContentsMargins(margin, margin, margin, margin);
 
     m_shadowEffect = new QGraphicsDropShadowEffect(this);
-    m_shadowEffect->setColor(m_baseColor);
-    m_shadowEffect->setBlurRadius(2 * margin);
+    m_hoverColor.setAlpha(180);
+    m_shadowEffect->setColor(m_hoverColor);
+    m_shadowEffect->setBlurRadius(2* margin);
     m_shadowEffect->setOffset(0, 0);
     setGraphicsEffect(m_shadowEffect);
 
@@ -70,10 +71,12 @@ void PinWidget::wheelEvent(QWheelEvent *e) {
 }
 
 void PinWidget::enterEvent(QEvent *) {
+    m_hoverColor.setAlpha(180);
     m_shadowEffect->setColor(m_hoverColor);
 }
 void PinWidget::leaveEvent(QEvent *) {
-    m_shadowEffect->setColor(m_baseColor);
+    m_hoverColor.setAlpha(180);
+    m_shadowEffect->setColor(m_hoverColor);
 }
 
 void PinWidget::mouseDoubleClickEvent(QMouseEvent *) {

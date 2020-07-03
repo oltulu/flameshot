@@ -351,15 +351,32 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         // paint handlers
         painter.setPen(m_uiColor);
         painter.setRenderHint(QPainter::Antialiasing);
-        //painter.setBrush(m_uiColor);
+        painter.setOpacity(0.5);
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2")
                          .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
 
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
-            painter.drawRoundRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
-                                  GlobalValues::buttonBaseSize()*20+2,GlobalValues::buttonBaseSize()+2,6,6);
+            QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
+                             GlobalValues::buttonBaseSize()*20+2,GlobalValues::buttonBaseSize()+2);
+            painter.drawRoundRect(rr,6,6);
+            QPainterPath path;
+            QColor color(92,93,95,50);
+            int arr[5] = {50,25,20,10,5};
+            for(int i=0; i<5; i++)
+            {
+                QPainterPath path;
+                path.setFillRule(Qt::WindingFill);
+                if(i == 1)
+                    path.addRect(rr.x(), rr.y(), rr.width(), rr.height());
+                else
+                   path.addRoundedRect(rr.x()-i, rr.y()-i, rr.width()+i*2,rr.height()+i*2,2,2);
+                color.setAlpha(arr[i]);
+                painter.setPen(color);
+                painter.drawPath(path);
+
+            }
             painter.drawRoundedRect(m_selection->geometry().intersected(rect()).x()+m_selection->geometry().intersected(rect()).width()+GlobalValues::buttonBaseSize()/3-2,
                                     m_selection->geometry().intersected(rect()).y()+GlobalValues::buttonBaseSize()/3-1,
                                     GlobalValues::buttonBaseSize(),
