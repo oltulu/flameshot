@@ -342,7 +342,6 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
                               Qt::white : Qt::black));
         painter.setBrush(QBrush(rectColor, Qt::SolidPattern));
         painter.setPen(QPen(textColor));
-
         painter.drawRect(bRect);
         painter.drawText(helpRect, Qt::AlignCenter, helpTxt);
     }
@@ -351,13 +350,14 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
         // paint handlers
         painter.setPen(m_uiColor);
         painter.setRenderHint(QPainter::Antialiasing);
-        painter.setOpacity(0.5);
+        painter.setOpacity(0.7);
         painter.setBrush(QColor(195,195,195));
         painter.drawRect((m_selection->geometry().intersected(rect()).x()+7),m_selection->geometry().intersected(rect()).y()-23,70,20);
         painter.drawText((m_selection->geometry().intersected(rect()).x()+10),m_selection->geometry().intersected(rect()).y()-5,tr("%1 * %2")
                          .arg(m_selection->geometry().intersected(rect()).width()).arg(m_selection->geometry().intersected(rect()).height()));
 
         if((vectorButtons.first()->pos().x()>0 && m_buttonHandler->isVisible())){
+            painter.setOpacity(0.2);
             QRect rr = QRect(vectorButtons.first()->pos().x()-10,vectorButtons.first()->pos().y(),
                              GlobalValues::buttonBaseSize()*20+2,GlobalValues::buttonBaseSize()+2);
             painter.drawRoundRect(rr,6,6);
@@ -367,11 +367,10 @@ void CaptureWidget::paintEvent(QPaintEvent *) {
             for(int i=0; i<5; i++)
             {
                 QPainterPath path;
-                path.setFillRule(Qt::WindingFill);
                 if(i == 1)
                     path.addRect(rr.x(), rr.y(), rr.width(), rr.height());
                 else
-                   path.addRoundedRect(rr.x()-i, rr.y()-i, rr.width()+i*2,rr.height()+i*2,2,2);
+                   path.addRoundedRect(rr.x()-i, rr.y()-i, rr.width()+i*2,rr.height()+i*2,6,6);
                 color.setAlpha(arr[i]);
                 painter.setPen(color);
                 painter.drawPath(path);

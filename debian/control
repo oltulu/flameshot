@@ -15,7 +15,7 @@ Homepage: https://github.com/lupoDharkael/flameshot
 Vcs-Browser: https://github.com/lupoDharkael/flameshot
 Vcs-Git: https://github.com/lupoDharkael/flameshot.git
 
-Package: flameshot
+Package: kylin-screenshot
 Architecture: any
 Depends:
  libqt5svg5,
