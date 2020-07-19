@@ -79,47 +79,47 @@
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="59"/>
         <source>&lt;b&gt;Capture Mode&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Yakalama Modu&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="64"/>
         <source>Rectangular Region</source>
-        <translation type="unfinished"></translation>
+        <translation>Dikdörtgen Bölge</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="65"/>
         <source>Full Screen (All Monitors)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam Ekran (Tüm Ekranlar)</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="72"/>
         <source>No Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Gecikme Yok</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="79"/>
         <source> second</source>
-        <translation type="unfinished"></translation>
+        <translation> saniye</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="79"/>
         <source> seconds</source>
-        <translation type="unfinished"></translation>
+        <translation> saniye</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="83"/>
         <source>Take new screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni ekran görüntüsü al</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="90"/>
         <source>Area:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alan:</translation>
     </message>
     <message>
         <location filename="../src/widgets/capturelauncher.cpp" line="91"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gecikme:</translation>
     </message>
 </context>
 <context>
@@ -145,13 +145,13 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="356"/>
         <source>%1 * %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 * %2</translation>
     </message>
     <message>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="1440"/>
         <location filename="../src/widgets/capture/capturewidget.cpp" line="1485"/>
         <source>Open Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Dizin Aç</translation>
     </message>
 </context>
 <context>
@@ -200,7 +200,7 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/core/controller.cpp" line="180"/>
         <source>&amp;Open Launcher</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlatıcı Aç</translation>
     </message>
     <message>
         <location filename="../src/core/controller.cpp" line="183"/>
@@ -236,12 +236,12 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/tools/cut/cut.cpp" line="20"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kes</translation>
     </message>
     <message>
         <location filename="../src/tools/cut/cut.cpp" line="28"/>
         <source>cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kes</translation>
     </message>
 </context>
 <context>
@@ -454,22 +454,22 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/config/geneneralconf.cpp" line="217"/>
         <source>Close after capture</source>
-        <translation type="unfinished"></translation>
+        <translation>Yakalamadan sonra kapat</translation>
     </message>
     <message>
         <location filename="../src/config/geneneralconf.cpp" line="221"/>
         <source>Close after taking a screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran görüntüsü aldıktan sonra kapatın</translation>
     </message>
     <message>
         <location filename="../src/config/geneneralconf.cpp" line="230"/>
         <source>Copy URL after upload</source>
-        <translation type="unfinished"></translation>
+        <translation>Yüklemeden sonra URL'yi kopyala</translation>
     </message>
     <message>
         <location filename="../src/config/geneneralconf.cpp" line="233"/>
         <source>Copy URL and close window after upload</source>
-        <translation type="unfinished"></translation>
+        <translation>Yüklendikten sonra URL'yi kopyala ve pencereyi kapat</translation>
     </message>
 </context>
 <context>
@@ -589,7 +589,7 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="74"/>
         <source>Toggle visibility of sidebar with options of the selected tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçili aracın seçenekleriyle kenar çubuğunun görünürlüğünü aç / kapat</translation>
     </message>
     <message>
         <location filename="../src/widgets/infowindow.cpp" line="75"/>
@@ -689,12 +689,12 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/tools/options/options.cpp" line="20"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçenekler</translation>
     </message>
     <message>
         <location filename="../src/tools/options/options.cpp" line="28"/>
         <source>options tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayar aracı</translation>
     </message>
 </context>
 <context>
@@ -771,7 +771,7 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/tools/imgur/imguruploader.cpp" line="82"/>
         <source>URL copied to clipboard.</source>
-        <translation type="unfinished">URL panoya kopyalandı.</translation>
+        <translation>URL panoya kopyalandı.</translation>
     </message>
 </context>
 <context>
@@ -797,7 +797,7 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/tools/redo/redotool.cpp" line="45"/>
         <source>Redo the next modification</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki değişikliği yeniden yap</translation>
     </message>
 </context>
 <context>
@@ -818,7 +818,7 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/utils/screengrabber.cpp" line="76"/>
         <source>Unable to capture screen</source>
-        <translation type="unfinished">Ekran resmi alınamadı</translation>
+        <translation>Ekran resmi alınamadı</translation>
     </message>
 </context>
 <context>
@@ -839,7 +839,7 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/widgets/panel/sidepanelwidget.cpp" line="67"/>
         <source>Active thickness:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktif kalınlığı:</translation>
     </message>
     <message>
         <location filename="../src/widgets/panel/sidepanelwidget.cpp" line="68"/>
@@ -854,7 +854,7 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/widgets/panel/sidepanelwidget.cpp" line="186"/>
         <source>Grab Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Renk Tut</translation>
     </message>
 </context>
 <context>
@@ -940,12 +940,12 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <message>
         <location filename="../src/config/strftimechooserwidget.cpp" line="60"/>
         <source>Time (%H-%M-%S)</source>
-        <translation type="unfinished"></translation>
+        <translation>Saat (%H-%M-%S)</translation>
     </message>
     <message>
         <location filename="../src/config/strftimechooserwidget.cpp" line="61"/>
         <source>Time (%H-%M)</source>
-        <translation type="unfinished"></translation>
+        <translation>Saat (%H-%M)</translation>
     </message>
     <message>
         <location filename="../src/config/strftimechooserwidget.cpp" line="62"/>
@@ -1013,12 +1013,12 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <name>TextTool</name>
     <message>
         <source>Text</source>
-        <translation type="vanished">Metin</translation>
+        <translation>Metin</translation>
     </message>
     <message>
         <location filename="../src/tools/text/texttool.cpp" line="53"/>
         <source>text</source>
-        <translation type="unfinished"></translation>
+        <translation>metin</translation>
     </message>
     <message>
         <location filename="../src/tools/text/texttool.cpp" line="61"/>
@@ -1068,12 +1068,12 @@ Yan paneli açmak için Boşluk tuşuna basın.</translation>
     <name>UndoTool</name>
     <message>
         <source>Undo</source>
-        <translation type="vanished">Geri</translation>
+        <translation>Geri</translation>
     </message>
     <message>
         <location filename="../src/tools/undo/undotool.cpp" line="38"/>
         <source>undo</source>
-        <translation type="unfinished"></translation>
+        <translation>Geri</translation>
     </message>
     <message>
         <location filename="../src/tools/undo/undotool.cpp" line="46"/>
